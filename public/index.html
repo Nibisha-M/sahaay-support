@@ -2,271 +2,398 @@
 <html lang="en" class="h-full bg-slate-950 text-slate-100 selection:bg-rose-500 selection:text-white">
 <head>
   <meta charset="UTF-8">
-  <title>Sahaay Support | SUD Recovery & Emergency Intervention Lifeline</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>Sahaay Support | Professional SUD Recovery & Emergency Intervention Engine</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="theme-color" content="#0f172a">
-  <meta name="description" content="Sahaay Support - Zero-typing AI crisis recovery platform for Kerala. Immediate panic grounding, emergency call scripts, and de-addiction locator.">
+  <meta name="description" content="Sahaay Support - Multi-modal, GenAI-powered recovery & emergency intervention engine for Substance Use Disorders in Kerala. Built with zero-typing voice SOS, clinical grounding soundscapes, and de-addiction facility locator.">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Google Fonts: Inter -->
+  <!-- Google Fonts: Inter & Outfit -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
-    @keyframes pulse-subtle {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.85; transform: scale(1.03); }
+    h1, h2, h3, .font-heading { font-family: 'Outfit', sans-serif; }
+    
+    /* Glassmorphism utility */
+    .glass-panel {
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
     }
-    .animate-pulse-subtle { animation: pulse-subtle 3s ease-in-out infinite; }
+    .glass-card {
+      background: rgba(30, 41, 59, 0.5);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .glass-card-active {
+      background: rgba(16, 185, 129, 0.1);
+      border-color: rgba(16, 185, 129, 0.3);
+    }
+    
+    /* Glowing Animations */
+    @keyframes glow-pulse {
+      0%, 100% { box-shadow: 0 0 15px rgba(244, 63, 94, 0.4), inset 0 0 10px rgba(244, 63, 94, 0.2); }
+      50% { box-shadow: 0 0 30px rgba(244, 63, 94, 0.8), inset 0 0 20px rgba(244, 63, 94, 0.4); }
+    }
+    .animate-glow-sos { animation: glow-pulse 2.5s infinite ease-in-out; }
+
+    @keyframes equalizer {
+      0%, 100% { height: 4px; }
+      50% { height: 24px; }
+    }
+    .eq-bar { animation: equalizer 1.2s infinite ease-in-out; }
+    .eq-1 { animation-delay: 0.1s; }
+    .eq-2 { animation-delay: 0.3s; }
+    .eq-3 { animation-delay: 0.5s; }
+    .eq-4 { animation-delay: 0.2s; }
+    .eq-5 { animation-delay: 0.4s; }
   </style>
 </head>
-<body class="min-h-full flex flex-col justify-between bg-slate-950 text-slate-100 antialiased">
+<body class="min-h-full flex flex-col justify-between bg-slate-950 text-slate-100 antialiased selection:bg-emerald-500 selection:text-slate-950">
 
-  <!-- Navigation Bar -->
-  <header class="sticky top-0 z-30 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 px-4 py-3">
-    <div class="max-w-xl mx-auto flex justify-between items-center">
+  <!-- Top Glass Bar -->
+  <header class="sticky top-0 z-40 glass-panel border-b border-slate-800/80 px-4 py-3 shadow-xl">
+    <div class="max-w-2xl mx-auto flex justify-between items-center">
       <div class="flex items-center space-x-3">
-        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-500 to-teal-400 flex items-center justify-center shadow-lg shadow-emerald-950">
-          <span class="text-xl">🛡️</span>
+        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-emerald-500 via-teal-500 to-cyan-400 p-0.5 shadow-lg shadow-emerald-950/50">
+          <div class="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center">
+            <span class="text-xl">🛡️</span>
+          </div>
         </div>
         <div>
-          <h1 class="font-extrabold text-base tracking-tight text-white flex items-center gap-1.5">
-            Sahaay Support <span class="text-xs font-normal text-emerald-400 font-mono">(Kerala)</span>
+          <h1 class="font-extrabold text-base tracking-tight text-white flex items-center gap-2 font-heading">
+            Sahaay Support <span class="text-[10px] font-mono font-normal bg-emerald-950 text-emerald-300 px-2 py-0.5 rounded-full border border-emerald-700/50">v2.5 Professional</span>
           </h1>
-          <p class="text-[11px] text-slate-400">Zero-Typing Recovery & Crisis Intervention</p>
+          <p class="text-[11px] text-slate-400 flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+            Zero-Typing Recovery Engine • Kerala DISHA 1056
+          </p>
         </div>
       </div>
       
-      <a href="tel:1056" class="bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-500 hover:to-red-500 text-white font-bold text-xs px-3.5 py-2 rounded-xl shadow-md shadow-rose-950 flex items-center gap-1.5 transition active:scale-95">
-        <span class="animate-ping w-2 h-2 rounded-full bg-white"></span>
-        <span>Call DISHA 1056</span>
+      <!-- Direct Dispatch Button -->
+      <a href="tel:1056" class="bg-gradient-to-r from-rose-600 via-red-600 to-rose-700 hover:from-rose-500 hover:to-red-500 text-white font-extrabold text-xs px-4 py-2.5 rounded-2xl shadow-lg shadow-rose-950/80 flex items-center gap-2 transition active:scale-95 border border-rose-400/30">
+        <span class="text-sm">📞</span>
+        <span class="hidden sm:inline">Emergency</span> DISHA 1056
       </a>
     </div>
   </header>
 
-  <!-- Main Container with 3 Feature Tabs -->
-  <main class="flex-1 max-w-xl mx-auto w-full p-4 space-y-4">
+  <!-- Main Professional Workstation Container -->
+  <main class="flex-1 max-w-2xl mx-auto w-full p-4 space-y-5">
 
-    <!-- Feature Navigation Tabs -->
-    <nav class="grid grid-cols-3 gap-1.5 p-1 bg-slate-900/90 border border-slate-800 rounded-2xl shadow-inner text-xs font-semibold">
-      <button id="tabBtn1" onclick="switchTab('tab1')" class="py-2.5 px-2 rounded-xl transition flex flex-col sm:flex-row items-center justify-center gap-1 bg-emerald-500 text-slate-950 font-bold shadow">
-        <span>⚡</span>
-        <span>Crisis SOS</span>
+    <!-- 4 Navigation Tabs -->
+    <nav class="grid grid-cols-4 gap-1.5 p-1.5 glass-panel rounded-2xl shadow-2xl text-xs font-semibold">
+      <button id="tabBtn1" onclick="switchTab('tab1')" class="py-2.5 px-2 rounded-xl transition flex flex-col sm:flex-row items-center justify-center gap-1.5 bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 font-bold shadow-lg shadow-emerald-950/40">
+        <span class="text-sm">⚡</span>
+        <span>SOS Hub</span>
       </button>
-      <button id="tabBtn2" onclick="switchTab('tab2')" class="py-2.5 px-2 rounded-xl transition flex flex-col sm:flex-row items-center justify-center gap-1 text-slate-400 hover:text-slate-200">
-        <span>🫁</span>
-        <span>Breathing Room</span>
+      <button id="tabBtn2" onclick="switchTab('tab2')" class="py-2.5 px-2 rounded-xl transition flex flex-col sm:flex-row items-center justify-center gap-1.5 text-slate-400 hover:text-slate-200">
+        <span class="text-sm">🫁</span>
+        <span>Grounding</span>
       </button>
-      <button id="tabBtn3" onclick="switchTab('tab3')" class="py-2.5 px-2 rounded-xl transition flex flex-col sm:flex-row items-center justify-center gap-1 text-slate-400 hover:text-slate-200">
-        <span>🏥</span>
-        <span>De-Addiction Locator</span>
+      <button id="tabBtn3" onclick="switchTab('tab3')" class="py-2.5 px-2 rounded-xl transition flex flex-col sm:flex-row items-center justify-center gap-1.5 text-slate-400 hover:text-slate-200">
+        <span class="text-sm">🏥</span>
+        <span>Radar</span>
+      </button>
+      <button id="tabBtn4" onclick="switchTab('tab4')" class="py-2.5 px-2 rounded-xl transition flex flex-col sm:flex-row items-center justify-center gap-1.5 text-slate-400 hover:text-slate-200">
+        <span class="text-sm">📊</span>
+        <span>Logs</span>
       </button>
     </nav>
 
-    <!-- ================= FEATURE 1: INSTANT CRISIS SOS HUB ================= -->
+    <!-- ================= TAB 1: AI EMERGENCY SOS COMMAND CENTER ================= -->
     <section id="tab1" class="space-y-4">
-      <!-- Location Context Selector -->
-      <div class="flex items-center justify-between bg-slate-900/60 border border-slate-800/80 rounded-xl px-3.5 py-2.5 text-xs text-slate-300">
-        <span class="font-medium flex items-center gap-1.5">
-          <span class="text-emerald-400">📍</span> Select District:
-        </span>
-        <select id="districtSelect" onchange="updateDistrictContext()" class="bg-slate-800 text-emerald-300 font-bold px-3 py-1 rounded-lg border border-slate-700 focus:outline-none focus:border-emerald-500">
-          <option value="Thiruvananthapuram" selected>Thiruvananthapuram</option>
-          <option value="Ernakulam">Ernakulam / Aluva</option>
-          <option value="Kozhikode">Kozhikode</option>
-          <option value="Thrissur">Thrissur</option>
-        </select>
+      
+      <!-- District & GPS Radar Bar -->
+      <div class="glass-panel rounded-2xl p-3.5 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs">
+        <div class="flex items-center gap-2">
+          <span class="text-emerald-400 text-base">📍</span>
+          <div>
+            <span class="text-slate-400 font-medium">Regional Emergency Network:</span>
+            <span id="gpsStatus" class="text-emerald-300 font-bold ml-1">Kerala State Coverage</span>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2 w-full sm:w-auto">
+          <select id="districtSelect" onchange="updateDistrictContext()" class="w-full sm:w-auto bg-slate-900 text-emerald-300 font-bold px-3 py-1.5 rounded-xl border border-slate-700/80 focus:outline-none focus:border-emerald-500">
+            <option value="Thiruvananthapuram" selected>Thiruvananthapuram (Capital)</option>
+            <option value="Ernakulam">Ernakulam / Aluva (Central)</option>
+            <option value="Kozhikode">Kozhikode (Malabar)</option>
+            <option value="Thrissur">Thrissur (Cultural)</option>
+          </select>
+        </div>
       </div>
 
-      <!-- Quick Action Tile Matrix -->
-      <div class="space-y-2">
+      <!-- Zero-Typing Tactile Tile Matrix -->
+      <div class="space-y-2.5">
         <div class="flex justify-between items-center px-1">
-          <h2 class="text-xs font-bold text-slate-400 uppercase tracking-wider">1-Tap Emergency Matrix</h2>
-          <span class="text-[10px] text-emerald-400 font-mono">Zero Typing Required</span>
+          <h2 class="text-xs font-bold text-slate-400 uppercase tracking-wider font-heading">Zero-Typing Emergency Matrix</h2>
+          <span class="text-[10px] text-emerald-400 font-mono flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Instant AI Protocol
+          </span>
         </div>
 
-        <div class="grid grid-cols-2 gap-3">
-          <button onclick="triggerCrisisTile('Intense Craving')" class="bg-gradient-to-br from-amber-950/70 to-slate-900 hover:from-amber-900/90 border border-amber-700/50 text-amber-100 p-4 rounded-2xl font-bold flex flex-col items-start space-y-1.5 transition active:scale-95 shadow-lg group">
-            <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl group-hover:scale-110 transition">
-              ⚡
+        <div class="grid grid-cols-2 gap-3.5">
+          <!-- Tile 1: Craving Relief -->
+          <button onclick="triggerCrisisTile('Intense Craving')" class="glass-card hover:border-amber-500/50 text-left p-4.5 rounded-2xl font-bold flex flex-col justify-between space-y-3 transition transform active:scale-98 shadow-xl group hover:shadow-amber-950/20">
+            <div class="flex justify-between items-start">
+              <div class="w-11 h-11 rounded-2xl bg-amber-500/15 border border-amber-500/30 text-amber-400 flex items-center justify-center text-2xl group-hover:scale-110 transition">
+                ⚡
+              </div>
+              <span class="text-[10px] bg-amber-950/80 text-amber-300 font-mono px-2 py-0.5 rounded-full border border-amber-700/50">Urge Relief</span>
             </div>
-            <span class="text-sm">Craving Relief</span>
-            <span class="text-[11px] text-amber-300/70 font-normal">Manage sudden urges</span>
+            <div>
+              <h3 class="text-sm font-bold text-white group-hover:text-amber-300 transition font-heading">Craving Defusal</h3>
+              <p class="text-[11px] text-slate-400 font-normal mt-0.5">Defuse sudden intense substance urges</p>
+            </div>
           </button>
 
-          <button onclick="triggerCrisisTile('Panic Grounding')" class="bg-gradient-to-br from-sky-950/70 to-slate-900 hover:from-sky-900/90 border border-sky-700/50 text-sky-100 p-4 rounded-2xl font-bold flex flex-col items-start space-y-1.5 transition active:scale-95 shadow-lg group">
-            <div class="w-10 h-10 rounded-xl bg-sky-500/20 text-sky-400 flex items-center justify-center text-xl group-hover:scale-110 transition">
-              🫁
+          <!-- Tile 2: Panic Grounding -->
+          <button onclick="triggerCrisisTile('Panic Grounding')" class="glass-card hover:border-sky-500/50 text-left p-4.5 rounded-2xl font-bold flex flex-col justify-between space-y-3 transition transform active:scale-98 shadow-xl group hover:shadow-sky-950/20">
+            <div class="flex justify-between items-start">
+              <div class="w-11 h-11 rounded-2xl bg-sky-500/15 border border-sky-500/30 text-sky-400 flex items-center justify-center text-2xl group-hover:scale-110 transition">
+                🫁
+              </div>
+              <span class="text-[10px] bg-sky-950/80 text-sky-300 font-mono px-2 py-0.5 rounded-full border border-sky-700/50">Anxiety Loop</span>
             </div>
-            <span class="text-sm">Panic Grounding</span>
-            <span class="text-[11px] text-sky-300/70 font-normal">4-7-8 Breathing circle</span>
+            <div>
+              <h3 class="text-sm font-bold text-white group-hover:text-sky-300 transition font-heading">Panic Grounding</h3>
+              <p class="text-[11px] text-slate-400 font-normal mt-0.5">Clinical 4-7-8 vagus nerve defusal</p>
+            </div>
           </button>
 
-          <button onclick="triggerCrisisTile('De-Escalate')" class="bg-gradient-to-br from-purple-950/70 to-slate-900 hover:from-purple-900/90 border border-purple-700/50 text-purple-100 p-4 rounded-2xl font-bold flex flex-col items-start space-y-1.5 transition active:scale-95 shadow-lg group">
-            <div class="w-10 h-10 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-xl group-hover:scale-110 transition">
-              🕊️
+          <!-- Tile 3: De-Escalate -->
+          <button onclick="triggerCrisisTile('De-Escalate')" class="glass-card hover:border-purple-500/50 text-left p-4.5 rounded-2xl font-bold flex flex-col justify-between space-y-3 transition transform active:scale-98 shadow-xl group hover:shadow-purple-950/20">
+            <div class="flex justify-between items-start">
+              <div class="w-11 h-11 rounded-2xl bg-purple-500/15 border border-purple-500/30 text-purple-400 flex items-center justify-center text-2xl group-hover:scale-110 transition">
+                🕊️
+              </div>
+              <span class="text-[10px] bg-purple-950/80 text-purple-300 font-mono px-2 py-0.5 rounded-full border border-purple-700/50">Caregiver</span>
             </div>
-            <span class="text-sm">De-Escalate</span>
-            <span class="text-[11px] text-purple-300/70 font-normal">Conflict management</span>
+            <div>
+              <h3 class="text-sm font-bold text-white group-hover:text-purple-300 transition font-heading">De-Escalate Conflict</h3>
+              <p class="text-[11px] text-slate-400 font-normal mt-0.5">Family conflict & withdrawal steps</p>
+            </div>
           </button>
 
-          <button onclick="triggerCrisisTile('Overdose Emergency')" class="bg-gradient-to-br from-rose-950 to-slate-900 hover:from-rose-900 border border-rose-600/70 text-rose-100 p-4 rounded-2xl font-bold flex flex-col items-start space-y-1.5 transition active:scale-95 shadow-xl shadow-rose-950/40 animate-pulse-subtle group">
-            <div class="w-10 h-10 rounded-xl bg-rose-500/20 text-rose-400 flex items-center justify-center text-xl group-hover:scale-110 transition">
-              🚨
+          <!-- Tile 4: Overdose Emergency -->
+          <button onclick="triggerCrisisTile('Overdose Emergency')" class="glass-card hover:border-rose-500/80 text-left p-4.5 rounded-2xl font-bold flex flex-col justify-between space-y-3 transition transform active:scale-98 shadow-2xl animate-glow-sos group">
+            <div class="flex justify-between items-start">
+              <div class="w-11 h-11 rounded-2xl bg-rose-500/20 border border-rose-500/40 text-rose-400 flex items-center justify-center text-2xl group-hover:scale-110 transition">
+                🚨
+              </div>
+              <span class="text-[10px] bg-rose-950 text-rose-300 font-mono px-2 py-0.5 rounded-full border border-rose-700 font-bold">1056 Call</span>
             </div>
-            <span class="text-sm">Medical Emergency</span>
-            <span class="text-[11px] text-rose-300/80 font-normal">DISHA 1056 Call Script</span>
+            <div>
+              <h3 class="text-sm font-bold text-rose-100 group-hover:text-white transition font-heading">Medical Overdose</h3>
+              <p class="text-[11px] text-rose-300/80 font-normal mt-0.5">DISHA 1056 Call Script</p>
+            </div>
           </button>
         </div>
       </div>
 
-      <!-- Ambient Voice Hold-to-Talk SOS -->
-      <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 flex flex-col items-center space-y-2 text-center shadow-lg">
-        <p class="text-xs font-semibold text-slate-300">Or Press & Hold Microphone for Voice SOS</p>
-        <button id="micBtn"
-                onmousedown="startMic(event)" 
-                ontouchstart="startMic(event)" 
-                onmouseup="stopMic(event)" 
-                ontouchend="stopMic(event)" 
-                class="w-20 h-20 bg-gradient-to-tr from-rose-600 to-red-500 hover:from-rose-500 hover:to-red-400 active:scale-95 text-white rounded-full flex items-center justify-center shadow-xl shadow-rose-950 border-4 border-slate-900 transition z-10 select-none">
-          <svg class="w-9 h-9 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
-          </svg>
-        </button>
-        <span id="micStatus" class="text-xs text-slate-400">Hold button to speak crisis message</span>
+      <!-- Ambient Voice Hold-to-Talk SOS Studio -->
+      <div class="glass-panel rounded-3xl p-5 text-center space-y-3 shadow-2xl border border-slate-800 relative overflow-hidden">
+        <div class="flex items-center justify-between text-xs text-slate-400 border-b border-slate-800/80 pb-2.5">
+          <span class="font-bold flex items-center gap-1.5 text-slate-200">
+            🎙️ Multi-Modal Voice SOS Engine
+          </span>
+          <span id="audioEq" class="hidden items-end gap-1 h-5">
+            <span class="w-1 bg-rose-500 rounded-full eq-bar eq-1"></span>
+            <span class="w-1 bg-rose-400 rounded-full eq-bar eq-2"></span>
+            <span class="w-1 bg-rose-500 rounded-full eq-bar eq-3"></span>
+            <span class="w-1 bg-rose-400 rounded-full eq-bar eq-4"></span>
+          </span>
+        </div>
+
+        <div class="py-2 flex justify-center items-center">
+          <button id="micBtn"
+                  onmousedown="startMic(event)" 
+                  ontouchstart="startMic(event)" 
+                  onmouseup="stopMic(event)" 
+                  ontouchend="stopMic(event)" 
+                  class="relative w-24 h-24 bg-gradient-to-tr from-rose-600 via-red-600 to-rose-500 hover:from-rose-500 hover:to-red-400 active:scale-95 text-white rounded-full flex items-center justify-center shadow-2xl shadow-rose-950 border-4 border-slate-900 transition z-10 select-none group">
+            <svg class="w-10 h-10 pointer-events-none group-hover:scale-110 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
+            </svg>
+          </button>
+        </div>
+
+        <p id="micStatus" class="text-xs text-slate-300 font-semibold tracking-wide">
+          Hold microphone button to speak distress signal in English or Malayalam
+        </p>
       </div>
 
-      <!-- Initial Welcome Card -->
-      <div id="initialWelcome" class="bg-slate-900/90 border border-slate-800 rounded-2xl p-5 text-center space-y-3 shadow-xl backdrop-blur-md">
-        <div class="w-14 h-14 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-full flex items-center justify-center mx-auto text-2xl">
+      <!-- Welcome Default Banner -->
+      <div id="initialWelcome" class="glass-card rounded-2xl p-5 text-center space-y-2 shadow-xl">
+        <div class="w-12 h-12 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-2xl flex items-center justify-center mx-auto text-xl shadow-inner">
           🛡️
         </div>
-        <div>
-          <h3 class="text-base font-bold text-white">You Are Safe Here</h3>
-          <p class="text-xs text-slate-400 mt-1">Tap any emergency action tile above or hold the microphone button to receive immediate guidance.</p>
-        </div>
+        <h3 class="text-base font-bold text-white font-heading">You Are Safe Here</h3>
+        <p class="text-xs text-slate-400 max-w-sm mx-auto">
+          In moments of sudden craving or panic, high cognitive load makes typing hard. Tap any action tile above or speak your SOS message.
+        </p>
       </div>
 
-      <!-- Dynamic Response Card Output -->
-      <div id="crisisOutput" class="hidden space-y-3">
-        <!-- Card rendered via JavaScript -->
+      <!-- Dynamic Response Command Card Output -->
+      <div id="crisisOutput" class="hidden space-y-4">
+        <!-- Rendered via JavaScript -->
       </div>
     </section>
 
-    <!-- ================= FEATURE 2: 4-7-8 BREATHING & AUDIO CO-REGULATION ================= -->
+    <!-- ================= TAB 2: CLINICAL 4-7-8 BREATHING & 432Hz SOUNDSCAPE ================= -->
     <section id="tab2" class="hidden space-y-4">
-      <div class="bg-slate-900/90 border border-slate-800 rounded-3xl p-6 text-center space-y-5 shadow-2xl backdrop-blur-md">
+      <div class="glass-panel rounded-3xl p-6 text-center space-y-6 shadow-2xl border border-slate-800">
         <div>
-          <span class="px-3 py-1 rounded-full text-xs font-extrabold bg-sky-950 text-sky-300 border border-sky-700/60 uppercase tracking-wide">
-            Clinical Co-Regulation
+          <span class="px-3.5 py-1 rounded-full text-xs font-extrabold bg-sky-950 text-sky-300 border border-sky-700/60 uppercase tracking-wider font-mono">
+            Vagus Nerve Co-Regulation
           </span>
-          <h2 class="text-xl font-bold text-white mt-2">4-7-8 Guided Breathing Circle</h2>
-          <p class="text-xs text-slate-400 mt-1 max-w-sm mx-auto">
-            Slowing down your breathing helps lower heart rate and reduce panic and intense drug cravings.
+          <h2 class="text-2xl font-bold text-white mt-3 font-heading">4-7-8 Guided Breathing Circle</h2>
+          <p class="text-xs text-slate-400 mt-1 max-w-md mx-auto leading-relaxed">
+            Slowing your breathing rate triggers parasympathetic vagal stimulation, reducing heart rate spike and defusing intense drug craving waves.
           </p>
         </div>
 
-        <!-- Interactive Animated SVG Breathing Circle -->
-        <div class="relative w-44 h-44 mx-auto flex items-center justify-center my-2">
+        <!-- Animated SVG Ring -->
+        <div class="relative w-48 h-48 mx-auto flex items-center justify-center my-3">
           <svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="42" stroke="currentColor" stroke-width="5" class="text-slate-800" fill="transparent" />
+            <circle cx="50" cy="50" r="42" stroke="currentColor" stroke-width="4" class="text-slate-800" fill="transparent" />
             <circle id="tab2ProgressCircle" cx="50" cy="50" r="42" stroke="currentColor" stroke-width="5" class="text-sky-400 transition-all duration-1000" stroke-dasharray="264" stroke-dashoffset="66" fill="transparent" />
           </svg>
           <div class="absolute flex flex-col items-center">
-            <span id="tab2Phase" class="text-sm font-extrabold text-sky-300 uppercase tracking-wider">Inhale</span>
-            <span id="tab2Timer" class="text-2xl font-mono text-white font-extrabold">4s</span>
+            <span id="tab2Phase" class="text-base font-extrabold text-sky-300 uppercase tracking-wider font-heading">Inhale</span>
+            <span id="tab2Timer" class="text-3xl font-mono text-white font-extrabold mt-1">4s</span>
+            <span class="text-[10px] text-slate-400 uppercase tracking-widest font-mono mt-1">Vagal Loop</span>
           </div>
         </div>
 
-        <!-- Control Buttons -->
-        <div class="flex justify-center items-center gap-3">
-          <button onclick="toggleBreathingAudio()" id="audioToggleBtn" class="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-bold px-4 py-2 rounded-xl flex items-center gap-1.5 transition">
-            🔊 Spoken Voice Guide
-          </button>
-          <button onclick="restartBreathingCycle()" class="bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold px-4 py-2 rounded-xl transition">
-            🔄 Restart Exercise
-          </button>
+        <!-- Free Built-In 432Hz Soundscape Synth Controls -->
+        <div class="glass-card rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+          <div class="flex items-center gap-2.5 text-left">
+            <div class="w-9 h-9 rounded-xl bg-teal-500/20 text-teal-400 flex items-center justify-center text-lg">
+              🎵
+            </div>
+            <div>
+              <h4 class="font-bold text-white font-heading">432Hz Harmonic Soundscape</h4>
+              <p class="text-[10px] text-slate-400">Free built-in soothing Web Audio synth</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <button onclick="toggleAmbientSoundscape()" id="soundscapeBtn" class="bg-teal-950 text-teal-300 hover:bg-teal-900 border border-teal-700/60 text-xs font-bold px-4 py-2 rounded-xl transition flex items-center gap-1.5">
+              <span>▶️</span> Play 432Hz Synth
+            </button>
+            <button onclick="restartBreathingCycle()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold px-3 py-2 rounded-xl transition">
+              🔄 Reset
+            </button>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ================= FEATURE 3: KERALA DE-ADDICTION & HOSPITAL LOCATOR ================= -->
+    <!-- ================= TAB 3: KERALA DE-ADDICTION RADAR LOCATOR ================= -->
     <section id="tab3" class="hidden space-y-4">
-      <div class="bg-slate-900/90 border border-slate-800 rounded-3xl p-5 space-y-4 shadow-xl">
+      <div class="glass-panel rounded-3xl p-5 space-y-4 shadow-2xl">
         <div class="flex justify-between items-center border-b border-slate-800 pb-3">
           <div>
-            <h2 class="text-base font-bold text-white">Kerala De-Addiction Directory</h2>
-            <p class="text-xs text-slate-400">Vimukthi Mission & Government Hospitals</p>
+            <h2 class="text-lg font-bold text-white font-heading">Kerala De-Addiction Radar</h2>
+            <p class="text-xs text-slate-400">Vimukthi Excise Mission & District Mental Health Hospitals</p>
           </div>
-          <span class="text-xs bg-emerald-950 text-emerald-300 border border-emerald-700 px-2.5 py-1 rounded-full font-bold">24x7 Active</span>
+          <button onclick="getUserCoordinates()" class="text-xs bg-emerald-950 text-emerald-300 hover:bg-emerald-900 border border-emerald-700 px-3 py-1.5 rounded-xl font-bold transition flex items-center gap-1">
+            <span>📡</span> GPS Distance
+          </button>
         </div>
 
         <!-- District Filter Bar -->
         <div class="flex gap-2 overflow-x-auto pb-1 text-xs">
-          <button onclick="filterDirectory('All')" class="bg-emerald-500 text-slate-950 font-bold px-3 py-1.5 rounded-lg whitespace-nowrap">All Districts</button>
-          <button onclick="filterDirectory('Thiruvananthapuram')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold px-3 py-1.5 rounded-lg whitespace-nowrap">Trivandrum</button>
-          <button onclick="filterDirectory('Ernakulam')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold px-3 py-1.5 rounded-lg whitespace-nowrap">Ernakulam / Aluva</button>
-          <button onclick="filterDirectory('Kozhikode')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold px-3 py-1.5 rounded-lg whitespace-nowrap">Kozhikode</button>
-          <button onclick="filterDirectory('Thrissur')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold px-3 py-1.5 rounded-lg whitespace-nowrap">Thrissur</button>
+          <button onclick="filterDirectory('All')" class="bg-emerald-500 text-slate-950 font-bold px-3.5 py-2 rounded-xl whitespace-nowrap shadow-md">All Kerala</button>
+          <button onclick="filterDirectory('Thiruvananthapuram')" class="bg-slate-900 hover:bg-slate-800 text-slate-300 font-semibold px-3.5 py-2 rounded-xl whitespace-nowrap border border-slate-800">Trivandrum</button>
+          <button onclick="filterDirectory('Ernakulam')" class="bg-slate-900 hover:bg-slate-800 text-slate-300 font-semibold px-3.5 py-2 rounded-xl whitespace-nowrap border border-slate-800">Ernakulam / Aluva</button>
+          <button onclick="filterDirectory('Kozhikode')" class="bg-slate-900 hover:bg-slate-800 text-slate-300 font-semibold px-3.5 py-2 rounded-xl whitespace-nowrap border border-slate-800">Kozhikode</button>
+          <button onclick="filterDirectory('Thrissur')" class="bg-slate-900 hover:bg-slate-800 text-slate-300 font-semibold px-3.5 py-2 rounded-xl whitespace-nowrap border border-slate-800">Thrissur</button>
         </div>
 
-        <!-- Directory List -->
-        <div id="directoryList" class="space-y-2.5 pt-1">
-          <!-- Dynamically inserted facility cards -->
+        <!-- Directory Facility Radar Cards -->
+        <div id="directoryList" class="space-y-3 pt-1">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TAB 4: CLINICAL RECOVERY EVENT LOG & ANALYTICS ================= -->
+    <section id="tab4" class="hidden space-y-4">
+      <div class="glass-panel rounded-3xl p-5 space-y-4 shadow-2xl">
+        <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+          <div>
+            <h2 class="text-lg font-bold text-white font-heading">Clinical Episode Tracker</h2>
+            <p class="text-xs text-slate-400">Anonymized crisis events & distress score trends</p>
+          </div>
+          <button onclick="clearRecoveryLogs()" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-400 px-3 py-1.5 rounded-xl transition">
+            Clear Logs
+          </button>
+        </div>
+
+        <!-- Logs Container -->
+        <div id="logsContainer" class="space-y-3">
+          <p class="text-xs text-slate-500 text-center py-6">No recorded crisis episodes yet. Episodes logged via SOS Hub will appear here automatically.</p>
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- Footer -->
-  <footer class="border-t border-slate-800/80 py-3 px-4 text-center text-xs text-slate-500 space-y-1 bg-slate-950">
+  <!-- Professional Footer -->
+  <footer class="border-t border-slate-800/80 py-3.5 px-4 text-center text-xs text-slate-500 space-y-1.5 bg-slate-950">
     <div class="flex justify-center gap-4 font-mono font-semibold text-[11px]">
-      <a href="tel:1056" class="text-slate-400 hover:text-rose-400">DISHA: 1056</a>
+      <a href="tel:1056" class="text-slate-400 hover:text-rose-400 transition">DISHA: 1056</a>
       <span>•</span>
-      <a href="tel:155300" class="text-slate-400 hover:text-rose-400">Vimukthi: 155300</a>
+      <a href="tel:155300" class="text-slate-400 hover:text-rose-400 transition">Vimukthi: 155300</a>
       <span>•</span>
-      <a href="tel:14446" class="text-slate-400 hover:text-rose-400">NMBA: 14446</a>
+      <a href="tel:14446" class="text-slate-400 hover:text-rose-400 transition">NMBA: 14446</a>
     </div>
-    <p class="text-[10px]">Sahaay Support Platform • Designed for Kerala State Ecosystem</p>
+    <p class="text-[10px]">Sahaay Support Platform • Zero-Typing SUD Emergency System for Kerala State</p>
   </footer>
 
-  <!-- Core JavaScript Script -->
+  <!-- Live Workstation Engine Script -->
   <script>
     let activeTab = 'tab1';
     let isRecording = false;
     let mediaRecorder = null;
     let audioChunks = [];
     let breathingInterval = null;
+    let userLat = null, userLng = null;
+    let audioCtx = null, soundOsc1 = null, soundOsc2 = null, soundGain = null;
+    let isSoundscapePlaying = false;
 
-    // Feature Tab Switcher
+    // Tab Switcher
     function switchTab(tabId) {
       activeTab = tabId;
-      ['tab1', 'tab2', 'tab3'].forEach(id => {
+      ['tab1', 'tab2', 'tab3', 'tab4'].forEach(id => {
         const el = document.getElementById(id);
         const btn = document.getElementById('tabBtn' + id.replace('tab', ''));
         if (id === tabId) {
           el.classList.remove('hidden');
-          btn.className = "py-2.5 px-2 rounded-xl transition flex flex-col sm:flex-row items-center justify-center gap-1 bg-emerald-500 text-slate-950 font-bold shadow";
+          btn.className = "py-2.5 px-2 rounded-xl transition flex flex-col sm:flex-row items-center justify-center gap-1.5 bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 font-bold shadow-lg shadow-emerald-950/40";
         } else {
           el.classList.add('hidden');
-          btn.className = "py-2.5 px-2 rounded-xl transition flex flex-col sm:flex-row items-center justify-center gap-1 text-slate-400 hover:text-slate-200";
+          btn.className = "py-2.5 px-2 rounded-xl transition flex flex-col sm:flex-row items-center justify-center gap-1.5 text-slate-400 hover:text-slate-200";
         }
       });
 
-      if (tabId === 'tab2') {
-        startTab2Breathing();
-      }
+      if (tabId === 'tab2') startTab2Breathing();
+      if (tabId === 'tab4') renderRecoveryLogs();
     }
 
-    // Trigger Quick Crisis Action
+    // Trigger Crisis Action
     function triggerCrisisTile(tileName) {
       const district = document.getElementById('districtSelect').value;
-      const outputEl = document.getElementById('crisisOutput');
       const welcomeEl = document.getElementById('initialWelcome');
       const micStatus = document.getElementById('micStatus');
       
@@ -281,15 +408,16 @@
       .then(res => res.json())
       .then(data => {
         renderCrisisCard(data);
-        micStatus.textContent = 'Hold button to speak crisis message';
+        saveCrisisLog(tileName, data);
+        micStatus.textContent = 'Hold microphone button to speak distress signal';
       })
       .catch(err => {
         console.error('API Error:', err);
-        micStatus.textContent = 'Hold button to speak crisis message';
+        micStatus.textContent = 'Hold microphone button to speak distress signal';
       });
     }
 
-    // Render Response Card in English
+    // Render Professional Response Command Card
     function renderCrisisCard(data) {
       const outputEl = document.getElementById('crisisOutput');
       outputEl.classList.remove('hidden');
@@ -297,14 +425,17 @@
       const isHighRisk = data.distress_score >= 8;
 
       let html = `
-        <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-5 space-y-4 shadow-xl text-left">
-          <!-- Header Badges -->
-          <div class="flex justify-between items-center border-b border-slate-800 pb-3">
-            <span class="px-3 py-1 rounded-full text-xs font-extrabold uppercase tracking-wide ${isHighRisk ? 'bg-rose-950 text-rose-300 border border-rose-700' : 'bg-emerald-950 text-emerald-300 border border-emerald-700'}">
-              Distress Level: ${data.distress_score}/10
-            </span>
+        <div class="glass-panel rounded-3xl p-5 space-y-4 shadow-2xl border border-slate-800 text-left animate-fade-in">
+          <!-- Score Bar -->
+          <div class="flex justify-between items-center border-b border-slate-800/80 pb-3">
+            <div class="flex items-center gap-2">
+              <span class="px-3.5 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider font-mono ${isHighRisk ? 'bg-rose-950 text-rose-300 border border-rose-700' : 'bg-emerald-950 text-emerald-300 border border-emerald-700'}">
+                Distress Score: ${data.distress_score}/10
+              </span>
+              <span class="text-[11px] text-slate-400 font-mono">${isHighRisk ? '🚨 Acute Crisis Protocol' : '🛡️ Vagal Defusal Active'}</span>
+            </div>
             ${data.call_helpline ? `
-              <a href="tel:${data.helpline_number}" class="bg-rose-600 hover:bg-rose-500 text-white font-extrabold text-xs px-3.5 py-1.5 rounded-xl shadow flex items-center gap-1.5 animate-bounce">
+              <a href="tel:${data.helpline_number}" class="bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-500 hover:to-red-500 text-white font-extrabold text-xs px-4 py-2 rounded-xl shadow-lg shadow-rose-950 flex items-center gap-1.5 animate-bounce">
                 📞 Call DISHA ${data.helpline_number}
               </a>
             ` : ''}
@@ -312,29 +443,29 @@
 
           <!-- Immediate English Coping Action -->
           <div class="space-y-1.5">
-            <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Immediate Coping Action</h3>
-            <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800 text-emerald-200 text-sm font-medium leading-relaxed">
+            <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider font-heading">Immediate Grounding Step</h3>
+            <div class="glass-card p-4 rounded-2xl border border-slate-800 text-emerald-200 text-sm font-medium leading-relaxed shadow-inner">
               "${data.immediate_action}"
             </div>
           </div>
 
           <!-- Spoken Script for Responders (English & Local Call Script) -->
           ${data.emergency_script ? `
-            <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-2">
+            <div class="glass-card rounded-2xl p-4 space-y-2 border border-slate-800">
               <div class="flex justify-between items-center border-b border-slate-800 pb-2">
-                <h4 class="text-xs font-bold text-slate-300 flex items-center gap-1.5">
+                <h4 class="text-xs font-bold text-slate-300 flex items-center gap-1.5 font-heading">
                   <span>🗣️ Spoken Emergency Call Script (DISHA 1056 Ready)</span>
                 </h4>
-                <span class="text-[10px] text-emerald-400 font-mono">Kerala Operator Ready</span>
+                <span class="text-[10px] text-emerald-400 font-mono bg-emerald-950/80 px-2.5 py-0.5 rounded-full border border-emerald-700/50">Operator Protocol</span>
               </div>
-              <p class="text-xs text-slate-200 bg-slate-900/90 p-3 rounded-lg border border-slate-800 font-medium leading-relaxed">
+              <p class="text-xs text-slate-200 bg-slate-950 p-3.5 rounded-xl border border-slate-800 font-medium leading-relaxed">
                 "${data.emergency_script}"
               </p>
               <div class="flex justify-between items-center pt-1 text-xs">
-                <button onclick="speakText('${escapeQuotes(data.immediate_action)}')" class="text-emerald-400 font-bold hover:underline flex items-center gap-1">
+                <button onclick="speakText('${escapeQuotes(data.immediate_action)}')" class="text-emerald-400 font-bold hover:text-emerald-300 flex items-center gap-1 transition">
                   🔊 Listen Guidance Audio
                 </button>
-                <a href="tel:${data.helpline_number || '1056'}" class="text-rose-400 font-bold hover:underline">
+                <a href="tel:${data.helpline_number || '1056'}" class="text-rose-400 font-bold hover:text-rose-300 transition">
                   Call Helpline 1056 ➔
                 </a>
               </div>
@@ -347,14 +478,14 @@
       speakText(data.immediate_action);
     }
 
-    // Tab 2: 4-7-8 Breathing Loop Animation
+    // 4-7-8 Breathing Loop Animation
     function startTab2Breathing() {
       if (breathingInterval) clearInterval(breathingInterval);
 
       const phases = [
-        { name: "Inhale Slowly", duration: 4, offset: 66, color: "text-sky-400" },
-        { name: "Hold Breath", duration: 7, offset: 0, color: "text-emerald-400" },
-        { name: "Exhale Gently", duration: 8, offset: 200, color: "text-amber-400" }
+        { name: "Inhale Slowly", duration: 4, offset: 66 },
+        { name: "Hold Breath", duration: 7, offset: 0 },
+        { name: "Exhale Gently", duration: 8, offset: 200 }
       ];
 
       let idx = 0;
@@ -385,8 +516,38 @@
       startTab2Breathing();
     }
 
-    function toggleBreathingAudio() {
-      speakText("Inhale deeply for 4 seconds... Hold your breath... Exhale slowly for 8 seconds. You are calm and safe.");
+    // Free Web Audio API Soundscape Synth (432Hz Calming Sine Waves)
+    function toggleAmbientSoundscape() {
+      const btn = document.getElementById('soundscapeBtn');
+      if (isSoundscapePlaying) {
+        if (soundGain) soundGain.gain.setValueAtTime(0, audioCtx.currentTime);
+        isSoundscapePlaying = false;
+        btn.innerHTML = '<span>▶️</span> Play 432Hz Synth';
+      } else {
+        if (!audioCtx) {
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        soundOsc1 = audioCtx.createOscillator();
+        soundOsc2 = audioCtx.createOscillator();
+        soundGain = audioCtx.createGain();
+
+        soundOsc1.type = 'sine';
+        soundOsc1.frequency.setValueAtTime(432, audioCtx.currentTime); // 432Hz harmonic
+        soundOsc2.type = 'sine';
+        soundOsc2.frequency.setValueAtTime(216, audioCtx.currentTime); // Sub-octave
+
+        soundGain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+
+        soundOsc1.connect(soundGain);
+        soundOsc2.connect(soundGain);
+        soundGain.connect(audioCtx.destination);
+
+        soundOsc1.start();
+        soundOsc2.start();
+
+        isSoundscapePlaying = true;
+        btn.innerHTML = '<span>⏸️</span> Pause 432Hz Synth';
+      }
     }
 
     // Voice SOS Recorder
@@ -395,9 +556,12 @@
       isRecording = true;
       const btn = document.getElementById('micBtn');
       const statusEl = document.getElementById('micStatus');
-      btn.classList.add('ring-4', 'ring-rose-400/50', 'scale-105');
-      statusEl.textContent = 'Listening... Release button when done speaking';
+      const eqEl = document.getElementById('audioEq');
+
+      btn.classList.add('ring-8', 'ring-rose-500/40', 'scale-105');
+      statusEl.textContent = 'Listening to voice SOS... Release button when done speaking';
       statusEl.classList.add('text-rose-400');
+      if (eqEl) eqEl.classList.remove('hidden');
 
       if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
@@ -416,9 +580,12 @@
 
       const btn = document.getElementById('micBtn');
       const statusEl = document.getElementById('micStatus');
-      btn.classList.remove('ring-4', 'ring-rose-400/50', 'scale-105');
-      statusEl.textContent = 'Processing voice message...';
+      const eqEl = document.getElementById('audioEq');
+
+      btn.classList.remove('ring-8', 'ring-rose-500/40', 'scale-105');
+      statusEl.textContent = 'Processing voice signal with Gemini AI...';
       statusEl.classList.remove('text-rose-400');
+      if (eqEl) eqEl.classList.add('hidden');
 
       if (mediaRecorder && mediaRecorder.state !== 'inactive') {
         mediaRecorder.stop();
@@ -428,7 +595,7 @@
       }
     }
 
-    // Text to Speech
+    // Free Browser Text to Speech
     function speakText(text) {
       if ('speechSynthesis' in window) {
         window.speechSynthesis.cancel();
@@ -442,7 +609,33 @@
       return str ? str.replace(/'/g, "\\'").replace(/"/g, '\\"') : '';
     }
 
-    // Tab 3 Directory Loader
+    // Geolocation Distance Calculation
+    function getUserCoordinates() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(pos => {
+          userLat = pos.coords.latitude;
+          userLng = pos.coords.longitude;
+          document.getElementById('gpsStatus').textContent = `GPS Active (${userLat.toFixed(2)}, ${userLng.toFixed(2)})`;
+          filterDirectory(document.getElementById('districtSelect').value);
+        }, () => {
+          alert('GPS permission not granted. Showing district centers.');
+        });
+      }
+    }
+
+    function calculateDistanceKm(lat1, lon1, lat2, lon2) {
+      if (!lat1 || !lon1 || !lat2 || !lon2) return null;
+      const R = 6371;
+      const dLat = (lat2 - lat1) * Math.PI / 180;
+      const dLon = (lon2 - lon1) * Math.PI / 180;
+      const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                Math.sin(dLon/2) * Math.sin(dLon/2);
+      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+      return (R * c).toFixed(1);
+    }
+
+    // Directory Radar Loader
     function filterDirectory(districtName) {
       fetch(`/safety_resources?district=${encodeURIComponent(districtName)}`)
         .then(res => res.json())
@@ -450,21 +643,73 @@
           const container = document.getElementById('directoryList');
           let html = '';
           data.resources.forEach(r => {
+            const dist = (userLat && r.lat) ? calculateDistanceKm(userLat, userLng, r.lat, r.lng) : null;
             html += `
-              <div class="p-3 bg-slate-950 rounded-2xl border border-slate-800 flex justify-between items-center text-xs">
+              <div class="glass-card rounded-2xl p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border border-slate-800 text-xs">
                 <div class="space-y-1">
-                  <h3 class="font-bold text-white">${r.title}</h3>
+                  <div class="flex items-center gap-2">
+                    <h3 class="font-bold text-white font-heading">${r.title}</h3>
+                    <span class="px-2 py-0.5 rounded-full text-[10px] font-mono bg-slate-900 text-slate-300 border border-slate-800">${r.type}</span>
+                  </div>
                   <p class="text-[11px] text-slate-400">${r.address}</p>
-                  <span class="inline-block px-2 py-0.5 rounded bg-slate-900 text-slate-400 text-[10px] border border-slate-800 font-mono">${r.district}</span>
+                  <div class="flex items-center gap-2 text-[10px] text-slate-500 font-mono">
+                    <span>District: ${r.district}</span>
+                    ${dist ? `<span>• GPS Distance: <strong class="text-emerald-400">${dist} km away</strong></span>` : ''}
+                  </div>
                 </div>
-                <a href="tel:${r.phone}" class="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-xs px-3.5 py-2 rounded-xl shadow flex items-center gap-1 whitespace-nowrap">
-                  📞 Call
+                <a href="tel:${r.phone}" class="w-full sm:w-auto bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-lg flex items-center justify-center gap-1.5 whitespace-nowrap transition active:scale-95 border border-emerald-400/30">
+                  📞 Direct Call (${r.phone})
                 </a>
               </div>
             `;
           });
           container.innerHTML = html;
         });
+    }
+
+    // Local Storage Recovery Log Tracker
+    function saveCrisisLog(triggerTile, data) {
+      let logs = JSON.parse(localStorage.getItem('sahaay_logs') || '[]');
+      logs.unshift({
+        id: Date.now(),
+        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        trigger: triggerTile,
+        score: data.distress_score,
+        action: data.immediate_action
+      });
+      localStorage.setItem('sahaay_logs', JSON.stringify(logs.slice(0, 10)));
+    }
+
+    function renderRecoveryLogs() {
+      const container = document.getElementById('logsContainer');
+      let logs = JSON.parse(localStorage.getItem('sahaay_logs') || '[]');
+      if (logs.length === 0) {
+        container.innerHTML = '<p class="text-xs text-slate-500 text-center py-6">No recorded crisis episodes yet. Episodes logged via SOS Hub will appear here automatically.</p>';
+        return;
+      }
+      let html = '';
+      logs.forEach(l => {
+        html += `
+          <div class="glass-card rounded-2xl p-3.5 border border-slate-800 text-xs flex justify-between items-center">
+            <div class="space-y-0.5">
+              <div class="flex items-center gap-2">
+                <span class="font-bold text-white font-heading">${l.trigger}</span>
+                <span class="text-[10px] font-mono bg-slate-900 px-2 py-0.5 rounded text-slate-400">${l.timestamp}</span>
+              </div>
+              <p class="text-[11px] text-slate-400 truncate max-w-sm">"${l.action}"</p>
+            </div>
+            <span class="px-2.5 py-1 rounded-full text-[10px] font-mono font-bold ${l.score >= 8 ? 'bg-rose-950 text-rose-300 border border-rose-800' : 'bg-emerald-950 text-emerald-300 border border-emerald-800'}">
+              Score: ${l.score}/10
+            </span>
+          </div>
+        `;
+      });
+      container.innerHTML = html;
+    }
+
+    function clearRecoveryLogs() {
+      localStorage.removeItem('sahaay_logs');
+      renderRecoveryLogs();
     }
 
     // Initial load

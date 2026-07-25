@@ -5,63 +5,81 @@ const KERALA_RESOURCES = [
     type: "helpline",
     district: "All Kerala",
     phone: "1056",
-    address: "Dept of Health & Family Welfare, Govt of Kerala (24x7 Toll Free)"
+    address: "Dept of Health & Family Welfare, Govt of Kerala (24x7 Toll Free)",
+    lat: 8.524139,
+    lng: 76.936638
   },
   {
     title: "Vimukthi Excise Anti-Narcotic Helpline",
     type: "helpline",
     district: "All Kerala",
     phone: "155300",
-    address: "Kerala State Excise Department Control Room"
+    address: "Kerala State Excise Department Control Room",
+    lat: 8.5089,
+    lng: 76.9537
   },
   {
     title: "National Nasha Mukt Bharat Helpline",
     type: "helpline",
     district: "All Kerala",
     phone: "14446",
-    address: "Ministry of Social Justice & Empowerment"
+    address: "Ministry of Social Justice & Empowerment",
+    lat: 8.5000,
+    lng: 76.9000
   },
   {
     title: "Vimukthi De-Addiction Centre - Govt MCH",
     type: "hospital",
     district: "Thiruvananthapuram",
     phone: "0471-2528300",
-    address: "Medical College Campus, Thiruvananthapuram"
+    address: "Medical College Campus, Thiruvananthapuram",
+    lat: 8.5241,
+    lng: 76.9284
   },
   {
     title: "Govt Mental Health Centre, Peroorkada",
     type: "hospital",
     district: "Thiruvananthapuram",
     phone: "0471-2433297",
-    address: "Peroorkada, Thiruvananthapuram"
+    address: "Peroorkada, Thiruvananthapuram",
+    lat: 8.5375,
+    lng: 76.9664
   },
   {
     title: "Vimukthi Centre - General Hospital Ernakulam",
     type: "hospital",
     district: "Ernakulam",
     phone: "0484-2360051",
-    address: "Marine Drive, Kochi, Ernakulam"
+    address: "Marine Drive, Kochi, Ernakulam",
+    lat: 9.9723,
+    lng: 76.2801
   },
   {
     title: "Taluk Head Quarters Hospital De-Addiction Unit",
     type: "hospital",
     district: "Ernakulam",
     phone: "0484-2624241",
-    address: "Substation Road, Aluva, Ernakulam"
+    address: "Substation Road, Aluva, Ernakulam",
+    lat: 10.1076,
+    lng: 76.3516
   },
   {
     title: "Govt Mental Health Centre, Kuthiravattom",
     type: "hospital",
     district: "Kozhikode",
     phone: "0495-2741756",
-    address: "Kuthiravattom, Kozhikode"
+    address: "Kuthiravattom, Kozhikode",
+    lat: 11.2612,
+    lng: 75.8034
   },
   {
     title: "Vimukthi Centre - District Hospital Thrissur",
     type: "hospital",
     district: "Thrissur",
     phone: "0487-2423150",
-    address: "Palakkad Road, Thrissur"
+    address: "Palakkad Road, Thrissur",
+    lat: 10.5276,
+    lng: 76.2144
   }
 ];
 
