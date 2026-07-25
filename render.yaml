@@ -1,0 +1,20 @@
+databases:
+  - name: sahaay_db
+    databaseName: sahaay_support
+    user: sahaay_user
+
+services:
+  - type: web
+    name: sahaay-support-v3
+    env: ruby
+    buildCommand: bundle install; bundle exec rails assets:precompile; bundle exec rails db:migrate
+    startCommand: bundle exec puma -C config/puma.rb
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: sahaay_db
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
