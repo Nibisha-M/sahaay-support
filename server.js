@@ -5,6 +5,38 @@ const path = require('path');
 
 const PORT = process.env.PORT || 3005;
 
+// Basic in-memory rate limiting for security
+const rateLimitCache = new Map();
+const RATE_LIMIT_WINDOW_MS = 60000; // 1 minute
+const MAX_REQUESTS_PER_WINDOW = 30;
+
+function checkRateLimit(ip) {
+  const now = Date.now();
+  if (!rateLimitCache.has(ip)) {
+    rateLimitCache.set(ip, { count: 1, resetTime: now + RATE_LIMIT_WINDOW_MS });
+    return true;
+  }
+  const record = rateLimitCache.get(ip);
+  if (now > record.resetTime) {
+    rateLimitCache.set(ip, { count: 1, resetTime: now + RATE_LIMIT_WINDOW_MS });
+    return true;
+  }
+  if (record.count >= MAX_REQUESTS_PER_WINDOW) {
+    return false;
+  }
+  record.count += 1;
+  return true;
+}
+
+// Utility to apply security headers
+function setSecurityHeaders(res) {
+  res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; img-src 'self' data:;");
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'DENY');
+  res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+  res.setHeader('X-XSS-Protection', '1; mode=block');
+}
+
 // Official Kerala Safety Facilities with GPS Coordinates
 const KERALA_RESOURCES = [
   {
@@ -132,12 +164,31 @@ function generateCrisisResponse(triggerTile, language = 'en', district = 'Thiruv
 }
 
 const server = http.createServer((req, res) => {
+  const clientIp = req.socket.remoteAddress || 'unknown';
+  if (!checkRateLimit(clientIp)) {
+    res.writeHead(429, { 'Content-Type': 'application/json' });
+    return res.end(JSON.stringify({ error: 'Too many requests, please try again later.' }));
+  }
+
+  setSecurityHeaders(res);
+
   if (req.method === 'GET' && (req.url === '/' || req.url === '/index.html')) {
     const filePath = path.join(__dirname, 'public', 'index.html');
     fs.readFile(filePath, (err, data) => {
       if (err) {
         res.writeHead(500, { 'Content-Type': 'text/plain' });
         res.end('Server Error loading Sahaay UI');
+      } else {
+        res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+        res.end(data);
+      }
+    });
+  } else if (req.method === 'GET' && ['/patient', '/caregiver', '/counselor'].includes(req.url)) {
+    const filePath = path.join(__dirname, 'public', `${req.url.substring(1)}.html`);
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.writeHead(500, { 'Content-Type': 'text/plain' });
+        res.end('Server Error loading dashboard');
       } else {
         res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
         res.end(data);
@@ -183,7 +234,15 @@ const server = http.createServer((req, res) => {
           language = params.get('language') || language;
           district = params.get('district') || district;
         }
-      } catch (e) {}
+      } catch (e) {
+        res.writeHead(400, { 'Content-Type': 'application/json; charset=utf-8' });
+        return res.end(JSON.stringify({ error: 'Invalid JSON payload' }));
+      }
+
+      // Basic input validation
+      if (typeof triggerTile !== 'string' || triggerTile.length > 100) triggerTile = 'Intense Craving';
+      if (typeof language !== 'string' || language.length > 10) language = 'en';
+      if (typeof district !== 'string' || district.length > 50) district = 'Thiruvananthapuram';
 
       const result = generateCrisisResponse(triggerTile, language, district);
       res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
@@ -195,9 +254,13 @@ const server = http.createServer((req, res) => {
   }
 });
 
-server.listen(PORT, () => {
-  console.log(`=======================================================`);
-  console.log(`  Sahaay Support Professional Workstation v2.5`);
-  console.log(`  Running on Port ${PORT}`);
-  console.log(`=======================================================`);
-});
+if (require.main === module) {
+  server.listen(PORT, () => {
+    console.log(`=======================================================`);
+    console.log(`  Sahaay Support Professional Workstation v2.5`);
+    console.log(`  Running on Port ${PORT}`);
+    console.log(`=======================================================`);
+  });
+}
+
+module.exports = server;

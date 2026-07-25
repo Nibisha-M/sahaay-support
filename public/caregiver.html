@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-950 text-slate-100">
+<head>
+  <meta charset="UTF-8">
+  <title>Caregiver Portal - Sahaay V3</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .glass-panel { background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); }
+    .glass-card { background: rgba(30, 41, 59, 0.5); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.06); }
+  </style>
+  <script>
+    function askRAG() {
+      const results = document.getElementById("rag-results");
+      results.innerHTML = "<p class='text-emerald-400 mt-2 text-xs'>Querying NIMHANS database...</p>";
+      setTimeout(() => {
+        results.innerHTML = "<p class='text-slate-300 mt-2 text-sm'>During opioid withdrawal, common symptoms include muscle aches, anxiety, and insomnia. According to NIMHANS guidelines, medical supervision is recommended. <br><br><span class='text-xs text-slate-500'>Sources: NIMHANS SUD Guidelines 2023, WHO Withdrawal Protocol</span></p>";
+      }, 1500);
+    }
+  </script>
+</head>
+<body class="p-6">
+  <div class="max-w-4xl mx-auto space-y-6">
+    <a href="/" class="text-emerald-400 hover:text-emerald-300 text-sm font-bold mb-4 inline-block">← Back to Main</a>
+
+    <div class="flex items-center justify-between">
+      <h1 class="text-2xl font-bold text-white font-heading">Caregiver Portal</h1>
+    </div>
+
+    <div class="glass-panel p-6 rounded-3xl space-y-4 shadow-xl border border-rose-900/30">
+      <h2 class="text-lg font-bold text-rose-300 font-heading">Smart Alerts</h2>
+      <p class="text-xs text-slate-400">AI predictions based on recent patient check-ins.</p>
+      <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl flex items-start gap-4">
+        <div class="bg-rose-950 text-rose-400 w-10 h-10 rounded-full flex items-center justify-center shrink-0">⚠️</div>
+        <div>
+          <h4 class="text-sm font-bold text-white">Elevated Relapse Risk Detected</h4>
+          <p class="text-xs text-slate-400 mt-1">The AI Companion detected high anxiety and cravings in the last 24 hours. A missed counseling session was also logged.</p>
+          <div class="mt-3 flex gap-2">
+            <button class="bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold px-4 py-2 rounded-lg transition">Generate De-escalation Script</button>
+            <button class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold px-4 py-2 rounded-lg transition">Call Patient</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="glass-card p-5 rounded-2xl border border-slate-800">
+        <h3 class="text-sm font-bold text-white font-heading">Family Education (RAG)</h3>
+        <p class="text-xs text-slate-400 mt-1">Ask the AI about withdrawal symptoms or how to handle conflict, strictly sourced from WHO & NIMHANS.</p>
+        <div class="flex mt-3 gap-2">
+          <input type="text" placeholder="e.g. How to manage anger?" class="w-full bg-slate-950 border border-slate-800 text-sm p-2.5 rounded-xl text-slate-200">
+          <button onclick="askRAG()" class="bg-sky-600 hover:bg-sky-500 text-white px-4 rounded-xl text-xs font-bold">Ask</button>
+        </div>
+        <div id="rag-results"></div>
+      </div>
+      <div class="glass-card p-5 rounded-2xl border border-slate-800">
+        <h3 class="text-sm font-bold text-white font-heading">Crisis Preparation Checklist</h3>
+        <ul class="text-xs text-slate-400 mt-2 space-y-2">
+          <li class="flex items-center gap-2"><input type="checkbox" checked class="accent-emerald-500"> Lock away harmful substances</li>
+          <li class="flex items-center gap-2"><input type="checkbox" checked class="accent-emerald-500"> Keep DISHA 1056 saved</li>
+          <li class="flex items-center gap-2"><input type="checkbox"> Review AI Emergency Script</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

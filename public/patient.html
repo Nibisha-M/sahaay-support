@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-950 text-slate-100">
+<head>
+  <meta charset="UTF-8">
+  <title>Patient Dashboard - Sahaay V3</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .glass-panel {
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+  </style>
+  <script>
+    // Embedded Companion Controller Logic
+    function startListening() {
+      const statusTarget = document.getElementById("companion-status");
+      const responseTarget = document.getElementById("companion-response");
+      const synth = window.speechSynthesis;
+      let recognition = null;
+      
+      if ('webkitSpeechRecognition' in window) {
+        recognition = new webkitSpeechRecognition();
+        recognition.continuous = false;
+        recognition.interimResults = false;
+        recognition.lang = 'en-US';
+        
+        recognition.onstart = () => {
+          statusTarget.textContent = "Listening...";
+        };
+
+        recognition.onresult = (event) => {
+          const transcript = event.results[0][0].transcript;
+          statusTarget.textContent = `You said: "${transcript}"... Thinking...`;
+          
+          // Simulate Gemini API Call
+          setTimeout(() => {
+            const reply = "I hear you. Remember that craving is like a wave—it will pass. You have been strong for 12 days, let's keep going. I'm here with you.";
+            responseTarget.textContent = reply;
+            statusTarget.textContent = "Response received.";
+            
+            const utterance = new SpeechSynthesisUtterance(reply);
+            utterance.rate = 0.95;
+            synth.speak(utterance);
+          }, 1500);
+        };
+        
+        recognition.onerror = (event) => {
+          statusTarget.textContent = "Error recognizing speech. Please try again.";
+        };
+        
+        recognition.start();
+      } else {
+        statusTarget.textContent = "Speech recognition not supported in this browser.";
+      }
+    }
+
+    // Embedded Vision Controller Logic
+    function processImage(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const preview = document.getElementById("vision-preview");
+      const results = document.getElementById("vision-results");
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        preview.src = e.target.result;
+        preview.classList.remove('hidden');
+        results.innerHTML = "<p class='text-slate-400 mt-4 text-center'>Analyzing image with Gemini Vision...</p>";
+        
+        // Simulate Gemini Vision API
+        setTimeout(() => {
+          results.innerHTML = `
+            <div class="space-y-2 mt-4 p-4 border border-emerald-500/30 rounded-xl bg-emerald-950/20">
+              <h4 class="text-sm font-bold text-white">Detected: Buprenorphine 2mg</h4>
+              <p class="text-xs text-slate-300"><span class="font-bold text-emerald-400">Safe Usage:</span> Take sublingually as prescribed by your doctor. Do not swallow or chew.</p>
+              <p class="text-xs text-slate-300"><span class="font-bold text-amber-400">Risks:</span> Mixing with alcohol can cause severe respiratory depression.</p>
+              <p class="text-xs text-slate-300"><span class="font-bold text-rose-400">Emergency:</span> If difficulty breathing occurs, call DISHA 1056 immediately.</p>
+            </div>
+          `;
+        }, 2000);
+      };
+      reader.readAsDataURL(file);
+    }
+  </script>
+</head>
+<body class="p-6">
+  <div class="max-w-4xl mx-auto space-y-6">
+    <a href="/" class="text-emerald-400 hover:text-emerald-300 text-sm font-bold mb-4 inline-block">← Back to Main</a>
+    
+    <div class="flex items-center justify-between">
+      <h1 class="text-2xl font-bold text-white font-heading">Recovery Journey</h1>
+      <div class="bg-slate-900 px-4 py-2 rounded-xl text-sm font-mono border border-slate-800">
+        Risk Level: <span class="text-rose-400 font-bold">High</span>
+      </div>
+    </div>
+
+    <!-- Companion AI Interface -->
+    <div class="glass-panel p-6 rounded-3xl space-y-4 shadow-xl border border-emerald-900/50 relative overflow-hidden group">
+      <div class="absolute -top-12 -right-12 w-32 h-32 bg-emerald-500/10 rounded-full blur-3xl"></div>
+      <div class="flex justify-between items-center">
+        <h2 class="text-lg font-bold text-emerald-300 font-heading flex items-center gap-2">
+          <span>🤖</span> AI Recovery Companion
+        </h2>
+      </div>
+      <div class="flex flex-col items-center justify-center py-6">
+        <button onclick="startListening()" class="w-20 h-20 bg-gradient-to-tr from-emerald-500 to-teal-400 rounded-full flex items-center justify-center shadow-lg shadow-emerald-900/50 hover:scale-105 transition">
+          <span class="text-2xl">🎙️</span>
+        </button>
+        <p id="companion-status" class="mt-4 text-xs font-mono text-slate-400">Tap to talk. Say "I feel anxious".</p>
+      </div>
+      <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 min-h-[80px]">
+        <p id="companion-response" class="text-sm text-slate-200 leading-relaxed font-medium">Hello, I'm Sahaay. How are you feeling today?</p>
+      </div>
+    </div>
+
+    <!-- AI Vision Pill Analyzer -->
+    <div class="glass-panel p-6 rounded-3xl space-y-4 shadow-xl border border-slate-800">
+      <h2 class="text-lg font-bold text-white font-heading flex items-center gap-2">
+        <span>📷</span> AI Vision Support
+      </h2>
+      <p class="text-xs text-slate-400">Upload a photo of your medication strip or prescription to get AI safety guidance.</p>
+      <input type="file" accept="image/*" onchange="processImage(event)" class="block w-full text-xs text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-slate-800 file:text-emerald-400 hover:file:bg-slate-700 transition" />
+      <img id="vision-preview" class="hidden rounded-xl max-h-48 mx-auto border border-slate-800 mt-4" />
+      <div id="vision-results"></div>
+    </div>
+  </div>
+</body>
+</html>

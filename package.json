@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "deploy": "vercel --prod"
+    "deploy": "vercel --prod",
+    "test": "jest"
   },
   "keywords": [
     "sahaay",
@@ -18,6 +19,8 @@
   "author": "Sahaay Team",
   "license": "MIT",
   "devDependencies": {
-    "@vercel/node": "^3.0.0"
+    "@vercel/node": "^3.0.0",
+    "jest": "^30.4.2",
+    "supertest": "^7.2.2"
   }
 }
