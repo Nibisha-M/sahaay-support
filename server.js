@@ -34,11 +34,13 @@ function checkRateLimit(ip) {
 
 // Utility to apply security headers
 function setSecurityHeaders(res) {
-  res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; img-src 'self' data:;");
+  res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://generativelanguage.googleapis.com; img-src 'self' data: blob:; media-src 'self' blob:;");
   res.setHeader('X-Content-Type-Options', 'nosniff');
   res.setHeader('X-Frame-Options', 'DENY');
-  res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+  res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
   res.setHeader('X-XSS-Protection', '1; mode=block');
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  res.setHeader('Permissions-Policy', 'camera=(), microphone=(self), geolocation=(self)');
 }
 
 // Official Kerala Safety Facilities with GPS Coordinates
@@ -258,7 +260,7 @@ const server = http.createServer((req, res) => {
     req.on('end', async () => {
       try {
         const { message } = JSON.parse(body);
-        const model = genAI.getGenerativeModel({ model: "antigravity-preview-05-2026" });
+        const model = genAI.getGenerativeModel({ model: "gemini-robotics-er-1.6-preview" });
         const prompt = `You are Sahaay, an empathetic AI recovery companion for someone with a Substance Use Disorder. Keep it brief (2 sentences max). User says: "${message}"`;
         const result = await model.generateContent(prompt);
         const response = result.response.text();
@@ -308,7 +310,7 @@ const server = http.createServer((req, res) => {
     req.on('end', async () => {
       try {
         const { query } = JSON.parse(body);
-        const model = genAI.getGenerativeModel({ model: "antigravity-preview-05-2026" });
+        const model = genAI.getGenerativeModel({ model: "gemini-robotics-er-1.6-preview" });
         const prompt = `Act as an expert based on NIMHANS and WHO guidelines for SUD. Answer briefly. Caregiver asks: "${query}"`;
         const result = await model.generateContent(prompt);
         res.writeHead(200, { 'Content-Type': 'application/json' });

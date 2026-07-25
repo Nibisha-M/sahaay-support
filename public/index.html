@@ -58,7 +58,7 @@
 <body class="min-h-full flex flex-col justify-between bg-slate-950 text-slate-100 antialiased selection:bg-emerald-500 selection:text-slate-950">
 
   <!-- Top Glass Bar -->
-  <header class="sticky top-0 z-40 glass-panel border-b border-slate-800/80 px-4 py-3 shadow-xl">
+  <header role="banner" class="sticky top-0 z-40 glass-panel border-b border-slate-800/80 px-4 py-3 shadow-xl">
     <div class="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
       <div class="flex items-center space-x-3 w-full md:w-auto justify-between md:justify-start">
         <div class="flex items-center space-x-3">
@@ -82,9 +82,9 @@
       
       <!-- Direct Dispatch & Dashboard Links -->
       <div class="flex flex-wrap items-center justify-center gap-2 w-full md:w-auto">
-        <a href="/patient" class="bg-emerald-900/50 hover:bg-emerald-800 text-emerald-300 font-bold text-xs px-3 py-2 rounded-xl transition border border-emerald-700/50">Patient</a>
-        <a href="/caregiver" class="bg-rose-900/50 hover:bg-rose-800 text-rose-300 font-bold text-xs px-3 py-2 rounded-xl transition border border-rose-700/50">Caregiver</a>
-        <a href="/counselor" class="bg-sky-900/50 hover:bg-sky-800 text-sky-300 font-bold text-xs px-3 py-2 rounded-xl transition border border-sky-700/50">Counselor</a>
+        <a href="/patient" aria-label="Go to Patient Dashboard" class="bg-emerald-900/50 hover:bg-emerald-800 text-emerald-300 font-bold text-xs px-3 py-2 rounded-xl transition border border-emerald-700/50">Patient</a>
+        <a href="/caregiver" aria-label="Go to Caregiver Dashboard" class="bg-rose-900/50 hover:bg-rose-800 text-rose-300 font-bold text-xs px-3 py-2 rounded-xl transition border border-rose-700/50">Caregiver</a>
+        <a href="/counselor" aria-label="Go to Counselor Dashboard" class="bg-sky-900/50 hover:bg-sky-800 text-sky-300 font-bold text-xs px-3 py-2 rounded-xl transition border border-sky-700/50">Counselor</a>
         <a href="tel:1056" class="bg-gradient-to-r from-rose-600 via-red-600 to-rose-700 hover:from-rose-500 hover:to-red-500 text-white font-extrabold text-xs px-4 py-2 rounded-xl shadow-lg shadow-rose-950/80 flex items-center gap-2 transition active:scale-95 border border-rose-400/30">
           <span class="text-sm">📞</span>
           <span class="hidden sm:inline">Emergency</span> 1056
@@ -94,11 +94,11 @@
   </header>
 
   <!-- Main Professional Workstation Container -->
-  <main class="flex-1 max-w-4xl mx-auto w-full p-4 space-y-5">
+  <main role="main" class="flex-1 max-w-4xl mx-auto w-full p-4 space-y-5">
 
     <!-- 4 Navigation Tabs -->
-    <nav class="grid grid-cols-4 gap-1.5 p-1.5 glass-panel rounded-2xl shadow-2xl text-xs font-semibold">
-      <button id="tabBtn1" onclick="switchTab('tab1')" class="py-2.5 px-2 rounded-xl transition flex flex-col sm:flex-row items-center justify-center gap-1.5 bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 font-bold shadow-lg shadow-emerald-950/40">
+    <nav role="navigation" aria-label="Main Tabs" class="grid grid-cols-4 gap-1.5 p-1.5 glass-panel rounded-2xl shadow-2xl text-xs font-semibold">
+      <button id="tabBtn1" aria-label="SOS Hub Tab" onclick="switchTab('tab1')" class="py-2.5 px-2 rounded-xl transition flex flex-col sm:flex-row items-center justify-center gap-1.5 bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 font-bold shadow-lg shadow-emerald-950/40">
         <span class="text-sm">⚡</span>
         <span>SOS Hub</span>
       </button>
@@ -130,7 +130,7 @@
         </div>
 
         <div class="flex items-center gap-2 w-full sm:w-auto">
-          <select id="districtSelect" onchange="updateDistrictContext()" class="w-full sm:w-auto bg-slate-900 text-emerald-300 font-bold px-3 py-1.5 rounded-xl border border-slate-700/80 focus:outline-none focus:border-emerald-500">
+          <select id="districtSelect" aria-label="Select District" onchange="updateDistrictContext()" class="w-full sm:w-auto bg-slate-900 text-emerald-300 font-bold px-3 py-1.5 rounded-xl border border-slate-700/80 focus:outline-none focus:border-emerald-500">
             <option value="Thiruvananthapuram" selected>Thiruvananthapuram (Capital)</option>
             <option value="Ernakulam">Ernakulam / Aluva (Central)</option>
             <option value="Kozhikode">Kozhikode (Malabar)</option>
@@ -223,6 +223,7 @@
 
         <div class="py-2 flex justify-center items-center">
           <button id="micBtn"
+                  aria-label="Hold to speak voice SOS"
                   onmousedown="startMic(event)" 
                   ontouchstart="startMic(event)" 
                   onmouseup="stopMic(event)" 
