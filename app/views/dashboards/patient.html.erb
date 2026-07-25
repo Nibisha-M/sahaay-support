@@ -1,0 +1,47 @@
+<!-- app/views/dashboards/patient.html.erb -->
+<div class="max-w-4xl mx-auto space-y-6">
+  <div class="flex items-center justify-between">
+    <h1 class="text-2xl font-bold text-white font-heading">Recovery Journey</h1>
+    <div class="bg-slate-900 px-4 py-2 rounded-xl text-sm font-mono border border-slate-800">
+      Risk Level: 
+      <span class="<%= @relapse_risk[:risk_level] == 'High' ? 'text-rose-400' : 'text-emerald-400' %> font-bold">
+        <%= @relapse_risk[:risk_level] %>
+      </span>
+    </div>
+  </div>
+
+  <!-- Companion AI Interface -->
+  <div data-controller="companion" class="glass-panel p-6 rounded-3xl space-y-4 shadow-xl border border-emerald-900/50 relative overflow-hidden group">
+    <div class="absolute -top-12 -right-12 w-32 h-32 bg-emerald-500/10 rounded-full blur-3xl group-hover:bg-emerald-500/20 transition duration-1000"></div>
+    
+    <div class="flex justify-between items-center">
+      <h2 class="text-lg font-bold text-emerald-300 font-heading flex items-center gap-2">
+        <span>🤖</span> AI Recovery Companion
+      </h2>
+    </div>
+    
+    <div class="flex flex-col items-center justify-center py-6">
+      <button data-action="click->companion#startListening" class="w-20 h-20 bg-gradient-to-tr from-emerald-500 to-teal-400 rounded-full flex items-center justify-center shadow-lg shadow-emerald-900/50 hover:scale-105 transition">
+        <span class="text-2xl">🎙️</span>
+      </button>
+      <p data-companion-target="status" class="mt-4 text-xs font-mono text-slate-400">Tap to talk. Say "I feel anxious" or "I need a daily goal."</p>
+    </div>
+
+    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 min-h-[80px]">
+      <p data-companion-target="response" class="text-sm text-slate-200 leading-relaxed font-medium">Hello, I'm Sahaay. How are you feeling today?</p>
+    </div>
+  </div>
+
+  <!-- AI Vision Pill Analyzer -->
+  <div data-controller="vision" class="glass-panel p-6 rounded-3xl space-y-4 shadow-xl border border-slate-800">
+    <h2 class="text-lg font-bold text-white font-heading flex items-center gap-2">
+      <span>📷</span> AI Vision Support
+    </h2>
+    <p class="text-xs text-slate-400">Upload a photo of your medication strip or prescription to get AI safety guidance.</p>
+    
+    <input type="file" accept="image/*" data-action="change->vision#processImage" class="block w-full text-xs text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-slate-800 file:text-emerald-400 hover:file:bg-slate-700 transition" />
+    
+    <img data-vision-target="preview" class="hidden rounded-xl max-h-48 mx-auto border border-slate-800 mt-4" />
+    <div data-vision-target="results"></div>
+  </div>
+</div>

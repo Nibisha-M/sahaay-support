@@ -1,0 +1,44 @@
+<!-- app/views/dashboards/counselor.html.erb -->
+<div class="max-w-4xl mx-auto space-y-6">
+  <div class="flex items-center justify-between">
+    <h1 class="text-2xl font-bold text-white font-heading">Counselor Overview</h1>
+  </div>
+
+  <div class="glass-panel p-6 rounded-3xl space-y-4 shadow-xl border border-slate-800">
+    <h2 class="text-lg font-bold text-sky-300 font-heading">Patient Pipeline & Risk Predictions</h2>
+    
+    <div class="overflow-x-auto">
+      <table class="w-full text-left text-sm text-slate-400">
+        <thead class="text-xs text-slate-500 uppercase bg-slate-900/50">
+          <tr>
+            <th class="px-4 py-3 rounded-tl-xl">Patient</th>
+            <th class="px-4 py-3">Mood Trend (7d)</th>
+            <th class="px-4 py-3">Missed Sessions</th>
+            <th class="px-4 py-3">AI Risk Score</th>
+            <th class="px-4 py-3 rounded-tr-xl">Action</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-slate-800/50">
+          <tr class="hover:bg-slate-900/50 transition">
+            <td class="px-4 py-4 font-bold text-white">Anil K. (PT-842)</td>
+            <td class="px-4 py-4">Declining 📉</td>
+            <td class="px-4 py-4 text-rose-400">1</td>
+            <td class="px-4 py-4"><span class="bg-rose-950 text-rose-300 px-2 py-1 rounded text-xs font-bold border border-rose-800">High Risk</span></td>
+            <td class="px-4 py-4">
+              <button class="text-sky-400 hover:text-sky-300 font-medium">Review AI Summary</button>
+            </td>
+          </tr>
+          <tr class="hover:bg-slate-900/50 transition">
+            <td class="px-4 py-4 font-bold text-white">Sunil M. (PT-105)</td>
+            <td class="px-4 py-4">Stable 📈</td>
+            <td class="px-4 py-4">0</td>
+            <td class="px-4 py-4"><span class="bg-emerald-950 text-emerald-300 px-2 py-1 rounded text-xs font-bold border border-emerald-800">Low Risk</span></td>
+            <td class="px-4 py-4">
+              <button class="text-sky-400 hover:text-sky-300 font-medium">View Logs</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
