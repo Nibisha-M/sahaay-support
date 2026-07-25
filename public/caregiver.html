@@ -10,12 +10,25 @@
     .glass-card { background: rgba(30, 41, 59, 0.5); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.06); }
   </style>
   <script>
-    function askRAG() {
+    async function askRAG() {
+      const input = document.getElementById('rag-input').value;
+      if (!input) return;
+      
       const results = document.getElementById("rag-results");
-      results.innerHTML = "<p class='text-emerald-400 mt-2 text-xs'>Querying NIMHANS database...</p>";
-      setTimeout(() => {
-        results.innerHTML = "<p class='text-slate-300 mt-2 text-sm'>During opioid withdrawal, common symptoms include muscle aches, anxiety, and insomnia. According to NIMHANS guidelines, medical supervision is recommended. <br><br><span class='text-xs text-slate-500'>Sources: NIMHANS SUD Guidelines 2023, WHO Withdrawal Protocol</span></p>";
-      }, 1500);
+      results.innerHTML = "<p class='text-emerald-400 mt-2 text-xs'>Querying NIMHANS database with AI...</p>";
+      
+      try {
+        const res = await fetch('/api/rag', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ query: input })
+        });
+        const data = await res.json();
+        const formatted = data.answer.replace(/\n/g, '<br>');
+        results.innerHTML = `<p class='text-slate-300 mt-2 text-sm'>${formatted} <br><br><span class='text-xs text-slate-500'>Sources: NIMHANS SUD Guidelines 2023, WHO Withdrawal Protocol</span></p>`;
+      } catch (e) {
+        results.innerHTML = "<p class='text-rose-400 mt-2 text-xs'>Error connecting to Knowledge Base.</p>";
+      }
     }
   </script>
 </head>
@@ -48,7 +61,7 @@
         <h3 class="text-sm font-bold text-white font-heading">Family Education (RAG)</h3>
         <p class="text-xs text-slate-400 mt-1">Ask the AI about withdrawal symptoms or how to handle conflict, strictly sourced from WHO & NIMHANS.</p>
         <div class="flex mt-3 gap-2">
-          <input type="text" placeholder="e.g. How to manage anger?" class="w-full bg-slate-950 border border-slate-800 text-sm p-2.5 rounded-xl text-slate-200">
+          <input type="text" id="rag-input" placeholder="e.g. How to manage anger?" class="w-full bg-slate-950 border border-slate-800 text-sm p-2.5 rounded-xl text-slate-200">
           <button onclick="askRAG()" class="bg-sky-600 hover:bg-sky-500 text-white px-4 rounded-xl text-xs font-bold">Ask</button>
         </div>
         <div id="rag-results"></div>

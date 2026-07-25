@@ -2,6 +2,10 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+require('dotenv').config();
+const { GoogleGenerativeAI } = require('@google/generative-ai');
+
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || 'mock-key');
 
 const PORT = process.env.PORT || 3005;
 
@@ -247,6 +251,77 @@ const server = http.createServer((req, res) => {
       const result = generateCrisisResponse(triggerTile, language, district);
       res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
       res.end(JSON.stringify(result));
+    });
+  } else if (req.method === 'POST' && req.url === '/api/companion') {
+    let body = '';
+    req.on('data', chunk => { body += chunk.toString(); });
+    req.on('end', async () => {
+      try {
+        const { message } = JSON.parse(body);
+        const model = genAI.getGenerativeModel({ model: "antigravity-preview-05-2026" });
+        const prompt = `You are Sahaay, an empathetic AI recovery companion for someone with a Substance Use Disorder. Keep it brief (2 sentences max). User says: "${message}"`;
+        const result = await model.generateContent(prompt);
+        const response = result.response.text();
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ reply: response }));
+      } catch (e) {
+        console.error('Companion AI Error:', e.message);
+        let errorMsg = "I'm having trouble connecting right now, but please stay strong.";
+        if (e.message.includes('401') || e.message.includes('authentication')) {
+           errorMsg = "Invalid Gemini API Key provided. Please update your .env file with a valid key starting with 'AIzaSy'.";
+        }
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ reply: errorMsg }));
+      }
+    });
+  } else if (req.method === 'POST' && req.url === '/api/vision') {
+    let body = '';
+    req.on('data', chunk => { body += chunk.toString(); });
+    req.on('end', async () => {
+      try {
+        const { imageBase64 } = JSON.parse(body);
+        const model = genAI.getGenerativeModel({ model: "gemini-robotics-er-1.6-preview" });
+        const prompt = "Analyze this pill or medication strip. Provide 3 short bullet points: 1) Detected medication, 2) Safe Usage, 3) Risks if mixed with alcohol.";
+        const imagePart = {
+          inlineData: {
+            data: imageBase64.split(',')[1],
+            mimeType: "image/jpeg"
+          }
+        };
+        const result = await model.generateContent([prompt, imagePart]);
+        const responseText = result.response.text();
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ analysis: responseText }));
+      } catch (e) {
+        console.error('Vision AI Error:', e.message);
+        let errorMsg = "Failed to analyze image with AI.";
+        if (e.message.includes('401') || e.message.includes('authentication')) {
+           errorMsg = "Invalid Gemini API Key provided. Please update your .env file with a valid key starting with 'AIzaSy'.";
+        }
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: errorMsg }));
+      }
+    });
+  } else if (req.method === 'POST' && req.url === '/api/rag') {
+    let body = '';
+    req.on('data', chunk => { body += chunk.toString(); });
+    req.on('end', async () => {
+      try {
+        const { query } = JSON.parse(body);
+        const model = genAI.getGenerativeModel({ model: "antigravity-preview-05-2026" });
+        const prompt = `Act as an expert based on NIMHANS and WHO guidelines for SUD. Answer briefly. Caregiver asks: "${query}"`;
+        const result = await model.generateContent(prompt);
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ answer: result.response.text() }));
+      } catch (e) {
+        console.error('RAG AI Error:', e.message);
+        let errorMsg = "System error answering query.";
+        if (e.message.includes('401') || e.message.includes('authentication')) {
+           errorMsg = "Invalid Gemini API Key provided. Please update your .env file with a valid key starting with 'AIzaSy'.";
+        }
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ answer: errorMsg }));
+      }
     });
   } else {
     res.writeHead(404);

@@ -30,20 +30,27 @@
           statusTarget.textContent = "Listening...";
         };
 
-        recognition.onresult = (event) => {
+        recognition.onresult = async (event) => {
           const transcript = event.results[0][0].transcript;
           statusTarget.textContent = `You said: "${transcript}"... Thinking...`;
           
-          // Simulate Gemini API Call
-          setTimeout(() => {
-            const reply = "I hear you. Remember that craving is like a wave—it will pass. You have been strong for 12 days, let's keep going. I'm here with you.";
+          try {
+            const res = await fetch('/api/companion', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ message: transcript })
+            });
+            const data = await res.json();
+            const reply = data.reply;
             responseTarget.textContent = reply;
             statusTarget.textContent = "Response received.";
             
             const utterance = new SpeechSynthesisUtterance(reply);
             utterance.rate = 0.95;
             synth.speak(utterance);
-          }, 1500);
+          } catch (e) {
+            statusTarget.textContent = "Error connecting to AI.";
+          }
         };
         
         recognition.onerror = (event) => {
@@ -65,22 +72,33 @@
       const results = document.getElementById("vision-results");
 
       const reader = new FileReader();
-      reader.onload = (e) => {
-        preview.src = e.target.result;
+      reader.onload = async (e) => {
+        const base64Str = e.target.result;
+        preview.src = base64Str;
         preview.classList.remove('hidden');
         results.innerHTML = "<p class='text-slate-400 mt-4 text-center'>Analyzing image with Gemini Vision...</p>";
         
-        // Simulate Gemini Vision API
-        setTimeout(() => {
-          results.innerHTML = `
-            <div class="space-y-2 mt-4 p-4 border border-emerald-500/30 rounded-xl bg-emerald-950/20">
-              <h4 class="text-sm font-bold text-white">Detected: Buprenorphine 2mg</h4>
-              <p class="text-xs text-slate-300"><span class="font-bold text-emerald-400">Safe Usage:</span> Take sublingually as prescribed by your doctor. Do not swallow or chew.</p>
-              <p class="text-xs text-slate-300"><span class="font-bold text-amber-400">Risks:</span> Mixing with alcohol can cause severe respiratory depression.</p>
-              <p class="text-xs text-slate-300"><span class="font-bold text-rose-400">Emergency:</span> If difficulty breathing occurs, call DISHA 1056 immediately.</p>
-            </div>
-          `;
-        }, 2000);
+        try {
+          const res = await fetch('/api/vision', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ imageBase64: base64Str })
+          });
+          const data = await res.json();
+          if (data.error) {
+            results.innerHTML = `<p class='text-rose-400 mt-4 text-center'>${data.error}</p>`;
+          } else {
+            // Convert simple markdown bullets or newlines to HTML
+            const formatted = data.analysis.replace(/\n/g, '<br>');
+            results.innerHTML = `
+              <div class="space-y-2 mt-4 p-4 border border-emerald-500/30 rounded-xl bg-emerald-950/20 text-sm text-slate-300">
+                ${formatted}
+              </div>
+            `;
+          }
+        } catch (error) {
+          results.innerHTML = "<p class='text-rose-400 mt-4 text-center'>Error connecting to Vision AI.</p>";
+        }
       };
       reader.readAsDataURL(file);
     }
