@@ -1,9 +1,8 @@
 {
   "version": 2,
-  "name": "sahaay-support",
   "builds": [
     {
-      "src": "api/*.js",
+      "src": "server.js",
       "use": "@vercel/node"
     },
     {
@@ -13,12 +12,20 @@
   ],
   "routes": [
     {
-      "src": "/crises",
-      "dest": "/api/crises.js"
+      "src": "/patient",
+      "dest": "/public/patient.html"
     },
     {
-      "src": "/safety_resources",
-      "dest": "/api/safety_resources.js"
+      "src": "/caregiver",
+      "dest": "/public/caregiver.html"
+    },
+    {
+      "src": "/counselor",
+      "dest": "/public/counselor.html"
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "/server.js"
     },
     {
       "src": "/(.*)",
