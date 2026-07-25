@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "name": "sahaay-support",
+  "builds": [
+    {
+      "src": "api/*.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "public/**/*",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/crises",
+      "dest": "/api/crises.js"
+    },
+    {
+      "src": "/safety_resources",
+      "dest": "/api/safety_resources.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/public/$1"
+    }
+  ]
+}

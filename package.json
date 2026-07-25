@@ -1,0 +1,23 @@
+{
+  "name": "sahaay-support",
+  "version": "1.0.0",
+  "description": "Sahaay Support - Zero-Typing SUD Recovery Lifeline Platform for Kerala",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "deploy": "vercel --prod"
+  },
+  "keywords": [
+    "sahaay",
+    "recovery",
+    "kerala",
+    "sud",
+    "disha-1056",
+    "vimukthi"
+  ],
+  "author": "Sahaay Team",
+  "license": "MIT",
+  "devDependencies": {
+    "@vercel/node": "^3.0.0"
+  }
+}

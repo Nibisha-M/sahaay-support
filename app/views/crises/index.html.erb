@@ -1,0 +1,113 @@
+<!-- Header -->
+<header class="flex justify-between items-center py-2.5 px-1 border-b border-slate-800/80">
+  <div class="flex items-center space-x-2.5">
+    <span class="relative flex h-3 w-3">
+      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+      <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+    </span>
+    <div>
+      <h1 class="font-bold text-lg tracking-tight text-emerald-400 font-malayalam flex items-center gap-1.5">
+        സഹായം <span class="text-xs font-mono text-slate-400 font-sans">(Sahaay)</span>
+      </h1>
+      <p class="text-[10px] text-slate-400 tracking-wide">Kerala Zero-Typing Recovery Lifeline</p>
+    </div>
+  </div>
+  <div class="flex items-center gap-2">
+    <a href="tel:1056" class="text-xs bg-rose-950/80 hover:bg-rose-900 border border-rose-700/60 text-rose-300 font-bold px-2.5 py-1 rounded-full flex items-center gap-1 transition shadow-sm">
+      <span class="animate-pulse">📞</span> DISHA 1056
+    </a>
+  </div>
+</header>
+
+<!-- Dynamic Crisis Output Area -->
+<main id="crisis_response_area" class="my-4 flex-1 flex flex-col justify-center">
+  <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-5 text-center space-y-4 shadow-2xl backdrop-blur-md">
+    <div class="w-16 h-16 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-full flex items-center justify-center mx-auto text-2xl shadow-inner">
+      🛡️
+    </div>
+    <div class="space-y-1">
+      <h2 class="text-xl font-extrabold text-slate-100 font-malayalam">നിങ്ങൾ സുരക്ഷിതനാണ്</h2>
+      <p class="text-xs text-slate-400">You are safe here. Tap a tile below or hold the mic button to speak in Malayalam or English.</p>
+    </div>
+    <div class="pt-2 border-t border-slate-800/60 flex justify-center items-center gap-2 text-[11px] text-slate-400">
+      <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300">Vimukthi Mission</span>
+      <span>•</span>
+      <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300">108 Ambulance Ready</span>
+    </div>
+  </div>
+</main>
+
+<!-- One-Tap Quick Action Tile Matrix -->
+<div class="space-y-2.5 mb-3">
+  <div class="flex justify-between items-center px-1">
+    <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">One-Tap Crisis Matrix</p>
+    <span class="text-[10px] text-emerald-400 font-mono">Zero Typing Needed</span>
+  </div>
+
+  <div class="grid grid-cols-2 gap-2.5">
+    <%= form_with url: crises_path, method: :post, data: { turbo_stream: true }, class: "contents" do |f| %>
+      <%= f.hidden_field :trigger_tile, value: "Intense Craving" %>
+      <button type="submit" class="bg-gradient-to-br from-amber-950/60 to-amber-900/30 hover:from-amber-900/80 hover:to-amber-800/40 border border-amber-700/50 text-amber-200 p-3.5 rounded-xl font-semibold flex flex-col items-center justify-center space-y-1 transition active:scale-95 shadow-md">
+        <span class="text-2xl">⚡</span>
+        <span class="text-xs font-bold">Craving Relief</span>
+        <span class="text-[10px] text-amber-400/80 font-malayalam">ആഗ്രഹം നിയന്ത്രിക്കാൻ</span>
+      </button>
+    <% end %>
+
+    <%= form_with url: crises_path, method: :post, data: { turbo_stream: true }, class: "contents" do |f| %>
+      <%= f.hidden_field :trigger_tile, value: "Panic Grounding" %>
+      <button type="submit" class="bg-gradient-to-br from-sky-950/60 to-sky-900/30 hover:from-sky-900/80 hover:to-sky-800/40 border border-sky-700/50 text-sky-200 p-3.5 rounded-xl font-semibold flex flex-col items-center justify-center space-y-1 transition active:scale-95 shadow-md">
+        <span class="text-2xl">🫁</span>
+        <span class="text-xs font-bold">Panic Grounding</span>
+        <span class="text-[10px] text-sky-400/80 font-malayalam">4-7-8 ശ്വസനം</span>
+      </button>
+    <% end %>
+
+    <%= form_with url: crises_path, method: :post, data: { turbo_stream: true }, class: "contents" do |f| %>
+      <%= f.hidden_field :trigger_tile, value: "De-Escalate" %>
+      <button type="submit" class="bg-gradient-to-br from-purple-950/60 to-purple-900/30 hover:from-purple-900/80 hover:to-purple-800/40 border border-purple-700/50 text-purple-200 p-3.5 rounded-xl font-semibold flex flex-col items-center justify-center space-y-1 transition active:scale-95 shadow-md">
+        <span class="text-2xl">🕊️</span>
+        <span class="text-xs font-bold">De-Escalate</span>
+        <span class="text-[10px] text-purple-400/80 font-malayalam">സംഘർഷം കുറയ്ക്കാൻ</span>
+      </button>
+    <% end %>
+
+    <%= form_with url: crises_path, method: :post, data: { turbo_stream: true }, class: "contents" do |f| %>
+      <%= f.hidden_field :trigger_tile, value: "Overdose Emergency" %>
+      <button type="submit" class="bg-gradient-to-br from-rose-950/80 to-rose-900/50 hover:from-rose-900 hover:to-rose-800/60 border border-rose-600/70 text-rose-100 p-3.5 rounded-xl font-semibold flex flex-col items-center justify-center space-y-1 transition active:scale-95 shadow-lg shadow-rose-950/50 animate-pulse">
+        <span class="text-2xl">🚨</span>
+        <span class="text-xs font-bold">Medical Script</span>
+        <span class="text-[10px] text-rose-300 font-malayalam">DISHA 1056 കോൾ സ്ക്രിപ്റ്റ്</span>
+      </button>
+    <% end %>
+  </div>
+</div>
+
+<!-- Primary Voice Hold-to-Talk Ambient SOS Button -->
+<div class="relative flex flex-col items-center py-2 space-y-1.5" data-controller="voice-recorder">
+  <div class="relative flex items-center justify-center">
+    <span class="absolute w-24 h-24 rounded-full bg-rose-600/20 animate-pulse-ring pointer-events-none"></span>
+    <button data-voice-recorder-target="button" 
+            data-action="mousedown->voice-recorder#start touchstart->voice-recorder#start mouseup->voice-recorder#stop touchend->voice-recorder#stop" 
+            class="w-20 h-20 bg-rose-600 hover:bg-rose-500 active:bg-rose-700 text-white rounded-full flex items-center justify-center shadow-xl shadow-rose-900/60 border-2 border-rose-400/30 transition transform active:scale-105 z-10">
+      <svg class="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
+      </svg>
+    </button>
+  </div>
+  <p class="text-[11px] font-semibold text-slate-300 tracking-wide text-center">
+    <span data-voice-recorder-target="statusText">Hold mic to speak in Malayalam / Manglish</span>
+  </p>
+</div>
+
+<!-- Footer Info & Kerala Emergency Contacts -->
+<footer class="text-center py-2 text-[10px] text-slate-500 border-t border-slate-800/60 mt-2 space-y-1">
+  <div class="flex justify-center gap-3 font-mono">
+    <span>DISHA: 1056</span>
+    <span>•</span>
+    <span>Vimukthi: 155300</span>
+    <span>•</span>
+    <span>National NMBA: 14446</span>
+  </div>
+  <p>Sahaay • Encrypted Anonymous Crisis Intervention Engine</p>
+</footer>

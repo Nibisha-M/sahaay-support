@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-950 text-slate-100 selection:bg-rose-500 selection:text-white">
+<head>
+  <meta charset="UTF-8">
+  <title>Sahaay Support | SUD Recovery & Emergency Intervention Lifeline</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#0f172a">
+  <meta name="description" content="Sahaay Support - Zero-typing AI crisis recovery platform for Kerala. Immediate panic grounding, emergency call scripts, and de-addiction locator.">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+    @keyframes pulse-subtle {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.85; transform: scale(1.03); }
+    }
+    .animate-pulse-subtle { animation: pulse-subtle 3s ease-in-out infinite; }
+  </style>
+</head>
+<body class="min-h-full flex flex-col justify-between bg-slate-950 text-slate-100 antialiased">
+
+  <!-- Navigation Bar -->
+  <header class="sticky top-0 z-30 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 px-4 py-3">
+    <div class="max-w-xl mx-auto flex justify-between items-center">
+      <div class="flex items-center space-x-3">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-500 to-teal-400 flex items-center justify-center shadow-lg shadow-emerald-950">
+          <span class="text-xl">🛡️</span>
+        </div>
+        <div>
+          <h1 class="font-extrabold text-base tracking-tight text-white flex items-center gap-1.5">
+            Sahaay Support <span class="text-xs font-normal text-emerald-400 font-mono">(Kerala)</span>
+          </h1>
+          <p class="text-[11px] text-slate-400">Zero-Typing Recovery & Crisis Intervention</p>
+        </div>
+      </div>
+      
+      <a href="tel:1056" class="bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-500 hover:to-red-500 text-white font-bold text-xs px-3.5 py-2 rounded-xl shadow-md shadow-rose-950 flex items-center gap-1.5 transition active:scale-95">
+        <span class="animate-ping w-2 h-2 rounded-full bg-white"></span>
+        <span>Call DISHA 1056</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Container with 3 Feature Tabs -->
+  <main class="flex-1 max-w-xl mx-auto w-full p-4 space-y-4">
+
+    <!-- Feature Navigation Tabs -->
+    <nav class="grid grid-cols-3 gap-1.5 p-1 bg-slate-900/90 border border-slate-800 rounded-2xl shadow-inner text-xs font-semibold">
+      <button id="tabBtn1" onclick="switchTab('tab1')" class="py-2.5 px-2 rounded-xl transition flex flex-col sm:flex-row items-center justify-center gap-1 bg-emerald-500 text-slate-950 font-bold shadow">
+        <span>⚡</span>
+        <span>Crisis SOS</span>
+      </button>
+      <button id="tabBtn2" onclick="switchTab('tab2')" class="py-2.5 px-2 rounded-xl transition flex flex-col sm:flex-row items-center justify-center gap-1 text-slate-400 hover:text-slate-200">
+        <span>🫁</span>
+        <span>Breathing Room</span>
+      </button>
+      <button id="tabBtn3" onclick="switchTab('tab3')" class="py-2.5 px-2 rounded-xl transition flex flex-col sm:flex-row items-center justify-center gap-1 text-slate-400 hover:text-slate-200">
+        <span>🏥</span>
+        <span>De-Addiction Locator</span>
+      </button>
+    </nav>
+
+    <!-- ================= FEATURE 1: INSTANT CRISIS SOS HUB ================= -->
+    <section id="tab1" class="space-y-4">
+      <!-- Location Context Selector -->
+      <div class="flex items-center justify-between bg-slate-900/60 border border-slate-800/80 rounded-xl px-3.5 py-2.5 text-xs text-slate-300">
+        <span class="font-medium flex items-center gap-1.5">
+          <span class="text-emerald-400">📍</span> Select District:
+        </span>
+        <select id="districtSelect" onchange="updateDistrictContext()" class="bg-slate-800 text-emerald-300 font-bold px-3 py-1 rounded-lg border border-slate-700 focus:outline-none focus:border-emerald-500">
+          <option value="Thiruvananthapuram" selected>Thiruvananthapuram</option>
+          <option value="Ernakulam">Ernakulam / Aluva</option>
+          <option value="Kozhikode">Kozhikode</option>
+          <option value="Thrissur">Thrissur</option>
+        </select>
+      </div>
+
+      <!-- Quick Action Tile Matrix -->
+      <div class="space-y-2">
+        <div class="flex justify-between items-center px-1">
+          <h2 class="text-xs font-bold text-slate-400 uppercase tracking-wider">1-Tap Emergency Matrix</h2>
+          <span class="text-[10px] text-emerald-400 font-mono">Zero Typing Required</span>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <button onclick="triggerCrisisTile('Intense Craving')" class="bg-gradient-to-br from-amber-950/70 to-slate-900 hover:from-amber-900/90 border border-amber-700/50 text-amber-100 p-4 rounded-2xl font-bold flex flex-col items-start space-y-1.5 transition active:scale-95 shadow-lg group">
+            <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl group-hover:scale-110 transition">
+              ⚡
+            </div>
+            <span class="text-sm">Craving Relief</span>
+            <span class="text-[11px] text-amber-300/70 font-normal">Manage sudden urges</span>
+          </button>
+
+          <button onclick="triggerCrisisTile('Panic Grounding')" class="bg-gradient-to-br from-sky-950/70 to-slate-900 hover:from-sky-900/90 border border-sky-700/50 text-sky-100 p-4 rounded-2xl font-bold flex flex-col items-start space-y-1.5 transition active:scale-95 shadow-lg group">
+            <div class="w-10 h-10 rounded-xl bg-sky-500/20 text-sky-400 flex items-center justify-center text-xl group-hover:scale-110 transition">
+              🫁
+            </div>
+            <span class="text-sm">Panic Grounding</span>
+            <span class="text-[11px] text-sky-300/70 font-normal">4-7-8 Breathing circle</span>
+          </button>
+
+          <button onclick="triggerCrisisTile('De-Escalate')" class="bg-gradient-to-br from-purple-950/70 to-slate-900 hover:from-purple-900/90 border border-purple-700/50 text-purple-100 p-4 rounded-2xl font-bold flex flex-col items-start space-y-1.5 transition active:scale-95 shadow-lg group">
+            <div class="w-10 h-10 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-xl group-hover:scale-110 transition">
+              🕊️
+            </div>
+            <span class="text-sm">De-Escalate</span>
+            <span class="text-[11px] text-purple-300/70 font-normal">Conflict management</span>
+          </button>
+
+          <button onclick="triggerCrisisTile('Overdose Emergency')" class="bg-gradient-to-br from-rose-950 to-slate-900 hover:from-rose-900 border border-rose-600/70 text-rose-100 p-4 rounded-2xl font-bold flex flex-col items-start space-y-1.5 transition active:scale-95 shadow-xl shadow-rose-950/40 animate-pulse-subtle group">
+            <div class="w-10 h-10 rounded-xl bg-rose-500/20 text-rose-400 flex items-center justify-center text-xl group-hover:scale-110 transition">
+              🚨
+            </div>
+            <span class="text-sm">Medical Emergency</span>
+            <span class="text-[11px] text-rose-300/80 font-normal">DISHA 1056 Call Script</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Ambient Voice Hold-to-Talk SOS -->
+      <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 flex flex-col items-center space-y-2 text-center shadow-lg">
+        <p class="text-xs font-semibold text-slate-300">Or Press & Hold Microphone for Voice SOS</p>
+        <button id="micBtn"
+                onmousedown="startMic(event)" 
+                ontouchstart="startMic(event)" 
+                onmouseup="stopMic(event)" 
+                ontouchend="stopMic(event)" 
+                class="w-20 h-20 bg-gradient-to-tr from-rose-600 to-red-500 hover:from-rose-500 hover:to-red-400 active:scale-95 text-white rounded-full flex items-center justify-center shadow-xl shadow-rose-950 border-4 border-slate-900 transition z-10 select-none">
+          <svg class="w-9 h-9 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
+          </svg>
+        </button>
+        <span id="micStatus" class="text-xs text-slate-400">Hold button to speak crisis message</span>
+      </div>
+
+      <!-- Initial Welcome Card -->
+      <div id="initialWelcome" class="bg-slate-900/90 border border-slate-800 rounded-2xl p-5 text-center space-y-3 shadow-xl backdrop-blur-md">
+        <div class="w-14 h-14 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-full flex items-center justify-center mx-auto text-2xl">
+          🛡️
+        </div>
+        <div>
+          <h3 class="text-base font-bold text-white">You Are Safe Here</h3>
+          <p class="text-xs text-slate-400 mt-1">Tap any emergency action tile above or hold the microphone button to receive immediate guidance.</p>
+        </div>
+      </div>
+
+      <!-- Dynamic Response Card Output -->
+      <div id="crisisOutput" class="hidden space-y-3">
+        <!-- Card rendered via JavaScript -->
+      </div>
+    </section>
+
+    <!-- ================= FEATURE 2: 4-7-8 BREATHING & AUDIO CO-REGULATION ================= -->
+    <section id="tab2" class="hidden space-y-4">
+      <div class="bg-slate-900/90 border border-slate-800 rounded-3xl p-6 text-center space-y-5 shadow-2xl backdrop-blur-md">
+        <div>
+          <span class="px-3 py-1 rounded-full text-xs font-extrabold bg-sky-950 text-sky-300 border border-sky-700/60 uppercase tracking-wide">
+            Clinical Co-Regulation
+          </span>
+          <h2 class="text-xl font-bold text-white mt-2">4-7-8 Guided Breathing Circle</h2>
+          <p class="text-xs text-slate-400 mt-1 max-w-sm mx-auto">
+            Slowing down your breathing helps lower heart rate and reduce panic and intense drug cravings.
+          </p>
+        </div>
+
+        <!-- Interactive Animated SVG Breathing Circle -->
+        <div class="relative w-44 h-44 mx-auto flex items-center justify-center my-2">
+          <svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="42" stroke="currentColor" stroke-width="5" class="text-slate-800" fill="transparent" />
+            <circle id="tab2ProgressCircle" cx="50" cy="50" r="42" stroke="currentColor" stroke-width="5" class="text-sky-400 transition-all duration-1000" stroke-dasharray="264" stroke-dashoffset="66" fill="transparent" />
+          </svg>
+          <div class="absolute flex flex-col items-center">
+            <span id="tab2Phase" class="text-sm font-extrabold text-sky-300 uppercase tracking-wider">Inhale</span>
+            <span id="tab2Timer" class="text-2xl font-mono text-white font-extrabold">4s</span>
+          </div>
+        </div>
+
+        <!-- Control Buttons -->
+        <div class="flex justify-center items-center gap-3">
+          <button onclick="toggleBreathingAudio()" id="audioToggleBtn" class="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-bold px-4 py-2 rounded-xl flex items-center gap-1.5 transition">
+            🔊 Spoken Voice Guide
+          </button>
+          <button onclick="restartBreathingCycle()" class="bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold px-4 py-2 rounded-xl transition">
+            🔄 Restart Exercise
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FEATURE 3: KERALA DE-ADDICTION & HOSPITAL LOCATOR ================= -->
+    <section id="tab3" class="hidden space-y-4">
+      <div class="bg-slate-900/90 border border-slate-800 rounded-3xl p-5 space-y-4 shadow-xl">
+        <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+          <div>
+            <h2 class="text-base font-bold text-white">Kerala De-Addiction Directory</h2>
+            <p class="text-xs text-slate-400">Vimukthi Mission & Government Hospitals</p>
+          </div>
+          <span class="text-xs bg-emerald-950 text-emerald-300 border border-emerald-700 px-2.5 py-1 rounded-full font-bold">24x7 Active</span>
+        </div>
+
+        <!-- District Filter Bar -->
+        <div class="flex gap-2 overflow-x-auto pb-1 text-xs">
+          <button onclick="filterDirectory('All')" class="bg-emerald-500 text-slate-950 font-bold px-3 py-1.5 rounded-lg whitespace-nowrap">All Districts</button>
+          <button onclick="filterDirectory('Thiruvananthapuram')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold px-3 py-1.5 rounded-lg whitespace-nowrap">Trivandrum</button>
+          <button onclick="filterDirectory('Ernakulam')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold px-3 py-1.5 rounded-lg whitespace-nowrap">Ernakulam / Aluva</button>
+          <button onclick="filterDirectory('Kozhikode')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold px-3 py-1.5 rounded-lg whitespace-nowrap">Kozhikode</button>
+          <button onclick="filterDirectory('Thrissur')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold px-3 py-1.5 rounded-lg whitespace-nowrap">Thrissur</button>
+        </div>
+
+        <!-- Directory List -->
+        <div id="directoryList" class="space-y-2.5 pt-1">
+          <!-- Dynamically inserted facility cards -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800/80 py-3 px-4 text-center text-xs text-slate-500 space-y-1 bg-slate-950">
+    <div class="flex justify-center gap-4 font-mono font-semibold text-[11px]">
+      <a href="tel:1056" class="text-slate-400 hover:text-rose-400">DISHA: 1056</a>
+      <span>•</span>
+      <a href="tel:155300" class="text-slate-400 hover:text-rose-400">Vimukthi: 155300</a>
+      <span>•</span>
+      <a href="tel:14446" class="text-slate-400 hover:text-rose-400">NMBA: 14446</a>
+    </div>
+    <p class="text-[10px]">Sahaay Support Platform • Designed for Kerala State Ecosystem</p>
+  </footer>
+
+  <!-- Core JavaScript Script -->
+  <script>
+    let activeTab = 'tab1';
+    let isRecording = false;
+    let mediaRecorder = null;
+    let audioChunks = [];
+    let breathingInterval = null;
+
+    // Feature Tab Switcher
+    function switchTab(tabId) {
+      activeTab = tabId;
+      ['tab1', 'tab2', 'tab3'].forEach(id => {
+        const el = document.getElementById(id);
+        const btn = document.getElementById('tabBtn' + id.replace('tab', ''));
+        if (id === tabId) {
+          el.classList.remove('hidden');
+          btn.className = "py-2.5 px-2 rounded-xl transition flex flex-col sm:flex-row items-center justify-center gap-1 bg-emerald-500 text-slate-950 font-bold shadow";
+        } else {
+          el.classList.add('hidden');
+          btn.className = "py-2.5 px-2 rounded-xl transition flex flex-col sm:flex-row items-center justify-center gap-1 text-slate-400 hover:text-slate-200";
+        }
+      });
+
+      if (tabId === 'tab2') {
+        startTab2Breathing();
+      }
+    }
+
+    // Trigger Quick Crisis Action
+    function triggerCrisisTile(tileName) {
+      const district = document.getElementById('districtSelect').value;
+      const outputEl = document.getElementById('crisisOutput');
+      const welcomeEl = document.getElementById('initialWelcome');
+      const micStatus = document.getElementById('micStatus');
+      
+      if (welcomeEl) welcomeEl.classList.add('hidden');
+      micStatus.textContent = `Analyzing ${tileName} for ${district}...`;
+
+      fetch('/crises', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ trigger_tile: tileName, language: 'en', district: district })
+      })
+      .then(res => res.json())
+      .then(data => {
+        renderCrisisCard(data);
+        micStatus.textContent = 'Hold button to speak crisis message';
+      })
+      .catch(err => {
+        console.error('API Error:', err);
+        micStatus.textContent = 'Hold button to speak crisis message';
+      });
+    }
+
+    // Render Response Card in English
+    function renderCrisisCard(data) {
+      const outputEl = document.getElementById('crisisOutput');
+      outputEl.classList.remove('hidden');
+      
+      const isHighRisk = data.distress_score >= 8;
+
+      let html = `
+        <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-5 space-y-4 shadow-xl text-left">
+          <!-- Header Badges -->
+          <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+            <span class="px-3 py-1 rounded-full text-xs font-extrabold uppercase tracking-wide ${isHighRisk ? 'bg-rose-950 text-rose-300 border border-rose-700' : 'bg-emerald-950 text-emerald-300 border border-emerald-700'}">
+              Distress Level: ${data.distress_score}/10
+            </span>
+            ${data.call_helpline ? `
+              <a href="tel:${data.helpline_number}" class="bg-rose-600 hover:bg-rose-500 text-white font-extrabold text-xs px-3.5 py-1.5 rounded-xl shadow flex items-center gap-1.5 animate-bounce">
+                📞 Call DISHA ${data.helpline_number}
+              </a>
+            ` : ''}
+          </div>
+
+          <!-- Immediate English Coping Action -->
+          <div class="space-y-1.5">
+            <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Immediate Coping Action</h3>
+            <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800 text-emerald-200 text-sm font-medium leading-relaxed">
+              "${data.immediate_action}"
+            </div>
+          </div>
+
+          <!-- Spoken Script for Responders (English & Local Call Script) -->
+          ${data.emergency_script ? `
+            <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-2">
+              <div class="flex justify-between items-center border-b border-slate-800 pb-2">
+                <h4 class="text-xs font-bold text-slate-300 flex items-center gap-1.5">
+                  <span>🗣️ Spoken Emergency Call Script (DISHA 1056 Ready)</span>
+                </h4>
+                <span class="text-[10px] text-emerald-400 font-mono">Kerala Operator Ready</span>
+              </div>
+              <p class="text-xs text-slate-200 bg-slate-900/90 p-3 rounded-lg border border-slate-800 font-medium leading-relaxed">
+                "${data.emergency_script}"
+              </p>
+              <div class="flex justify-between items-center pt-1 text-xs">
+                <button onclick="speakText('${escapeQuotes(data.immediate_action)}')" class="text-emerald-400 font-bold hover:underline flex items-center gap-1">
+                  🔊 Listen Guidance Audio
+                </button>
+                <a href="tel:${data.helpline_number || '1056'}" class="text-rose-400 font-bold hover:underline">
+                  Call Helpline 1056 ➔
+                </a>
+              </div>
+            </div>
+          ` : ''}
+        </div>
+      `;
+
+      outputEl.innerHTML = html;
+      speakText(data.immediate_action);
+    }
+
+    // Tab 2: 4-7-8 Breathing Loop Animation
+    function startTab2Breathing() {
+      if (breathingInterval) clearInterval(breathingInterval);
+
+      const phases = [
+        { name: "Inhale Slowly", duration: 4, offset: 66, color: "text-sky-400" },
+        { name: "Hold Breath", duration: 7, offset: 0, color: "text-emerald-400" },
+        { name: "Exhale Gently", duration: 8, offset: 200, color: "text-amber-400" }
+      ];
+
+      let idx = 0;
+      let secs = phases[0].duration;
+
+      const updateUI = () => {
+        const pEl = document.getElementById('tab2Phase');
+        const tEl = document.getElementById('tab2Timer');
+        const cEl = document.getElementById('tab2ProgressCircle');
+
+        if (pEl) pEl.textContent = phases[idx].name;
+        if (tEl) tEl.textContent = secs + 's';
+        if (cEl) cEl.setAttribute('stroke-dashoffset', phases[idx].offset);
+      };
+
+      updateUI();
+      breathingInterval = setInterval(() => {
+        secs -= 1;
+        if (secs <= 0) {
+          idx = (idx + 1) % phases.length;
+          secs = phases[idx].duration;
+        }
+        updateUI();
+      }, 1000);
+    }
+
+    function restartBreathingCycle() {
+      startTab2Breathing();
+    }
+
+    function toggleBreathingAudio() {
+      speakText("Inhale deeply for 4 seconds... Hold your breath... Exhale slowly for 8 seconds. You are calm and safe.");
+    }
+
+    // Voice SOS Recorder
+    function startMic(e) {
+      if (e) e.preventDefault();
+      isRecording = true;
+      const btn = document.getElementById('micBtn');
+      const statusEl = document.getElementById('micStatus');
+      btn.classList.add('ring-4', 'ring-rose-400/50', 'scale-105');
+      statusEl.textContent = 'Listening... Release button when done speaking';
+      statusEl.classList.add('text-rose-400');
+
+      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
+          mediaRecorder = new MediaRecorder(stream);
+          audioChunks = [];
+          mediaRecorder.ondataavailable = ev => { if (ev.data.size > 0) audioChunks.push(ev.data); };
+          mediaRecorder.start();
+        }).catch(err => console.warn(err));
+      }
+    }
+
+    function stopMic(e) {
+      if (e) e.preventDefault();
+      if (!isRecording) return;
+      isRecording = false;
+
+      const btn = document.getElementById('micBtn');
+      const statusEl = document.getElementById('micStatus');
+      btn.classList.remove('ring-4', 'ring-rose-400/50', 'scale-105');
+      statusEl.textContent = 'Processing voice message...';
+      statusEl.classList.remove('text-rose-400');
+
+      if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+        mediaRecorder.stop();
+        mediaRecorder.onstop = () => triggerCrisisTile('Intense Craving');
+      } else {
+        triggerCrisisTile('Intense Craving');
+      }
+    }
+
+    // Text to Speech
+    function speakText(text) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.rate = 0.95;
+        window.speechSynthesis.speak(utterance);
+      }
+    }
+
+    function escapeQuotes(str) {
+      return str ? str.replace(/'/g, "\\'").replace(/"/g, '\\"') : '';
+    }
+
+    // Tab 3 Directory Loader
+    function filterDirectory(districtName) {
+      fetch(`/safety_resources?district=${encodeURIComponent(districtName)}`)
+        .then(res => res.json())
+        .then(data => {
+          const container = document.getElementById('directoryList');
+          let html = '';
+          data.resources.forEach(r => {
+            html += `
+              <div class="p-3 bg-slate-950 rounded-2xl border border-slate-800 flex justify-between items-center text-xs">
+                <div class="space-y-1">
+                  <h3 class="font-bold text-white">${r.title}</h3>
+                  <p class="text-[11px] text-slate-400">${r.address}</p>
+                  <span class="inline-block px-2 py-0.5 rounded bg-slate-900 text-slate-400 text-[10px] border border-slate-800 font-mono">${r.district}</span>
+                </div>
+                <a href="tel:${r.phone}" class="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-xs px-3.5 py-2 rounded-xl shadow flex items-center gap-1 whitespace-nowrap">
+                  📞 Call
+                </a>
+              </div>
+            `;
+          });
+          container.innerHTML = html;
+        });
+    }
+
+    // Initial load
+    filterDirectory('All');
+  </script>
+</body>
+</html>

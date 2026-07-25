@@ -1,0 +1,68 @@
+<div id="crisis_response_area" class="bg-slate-900 border border-emerald-500/40 rounded-2xl p-5 space-y-4 shadow-2xl animate-fade-in relative overflow-hidden">
+  <!-- Glowing subtle backdrop accent -->
+  <div class="absolute -top-12 -right-12 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none"></div>
+
+  <!-- Guidance Header Card -->
+  <div class="flex items-center justify-between border-b border-slate-800/80 pb-3">
+    <div class="flex items-center space-x-2">
+      <span class="px-2.5 py-1 rounded-full text-[11px] font-extrabold tracking-wide uppercase bg-emerald-950 text-emerald-300 border border-emerald-700/60 shadow-sm">
+        Distress Score: <%= result["distress_score"] %>/10
+      </span>
+    </div>
+    <% if result["call_helpline"] %>
+      <a href="tel:<%= result['helpline_number'] %>" class="bg-rose-600 hover:bg-rose-500 text-white font-extrabold text-xs px-3.5 py-1.5 rounded-lg shadow-lg shadow-rose-950/50 flex items-center space-x-1.5 animate-bounce">
+        <span>📞 Call DISHA <%= result["helpline_number"] %></span>
+      </a>
+    <% end %>
+  </div>
+
+  <!-- Immediate Coping Action -->
+  <div class="space-y-1.5">
+    <h3 class="text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center justify-between">
+      <span>Immediate Coping Action</span>
+      <span class="text-emerald-400 font-malayalam">ഉടനടിയുള്ള പ്രവർത്തനം</span>
+    </h3>
+    <p class="text-sm text-emerald-200 font-medium leading-relaxed font-malayalam bg-emerald-950/30 p-3 rounded-xl border border-emerald-800/40">
+      "<%= result["immediate_action"] %>"
+    </p>
+  </div>
+
+  <!-- Synchronized 4-7-8 Breathing Circle Visualizer if Panic or Craving -->
+  <% if result["distress_score"].to_i >= 6 %>
+    <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-4 text-center space-y-2">
+      <h4 class="text-[11px] font-bold text-slate-400 uppercase tracking-wide">4-7-8 Co-Regulation Breathing Loop</h4>
+      
+      <!-- Dynamic SVG Breathing Circle -->
+      <div class="relative w-28 h-28 mx-auto flex items-center justify-center my-1">
+        <svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="42" stroke="currentColor" stroke-width="6" class="text-slate-800" fill="transparent" />
+          <circle cx="50" cy="50" r="42" stroke="currentColor" stroke-width="6" class="text-emerald-500 animate-pulse" stroke-dasharray="264" stroke-dashoffset="66" fill="transparent" />
+        </svg>
+        <span class="absolute text-xs font-bold text-emerald-300 font-mono">BREATHE</span>
+      </div>
+      <p class="text-[11px] text-slate-400 font-malayalam">ശ്വാസമെടുക്കുക 4s • അടക്കിവെക്കുക 7s • പുറത്തുവിടുക 8s</p>
+    </div>
+  <% end %>
+
+  <!-- Spoken Call Script for Emergency Responders -->
+  <% if result["emergency_script"].present? %>
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-2 relative">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+        <h4 class="text-[11px] font-bold text-slate-400 uppercase tracking-wide flex items-center gap-1.5">
+          <span>🗣️ Spoken Emergency Call Script</span>
+        </h4>
+        <span class="text-emerald-400 font-mono text-[10px] bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-800/40">DISHA 1056 Ready</span>
+      </div>
+      <p class="text-sm font-malayalam text-slate-100 leading-snug font-semibold bg-slate-900/90 p-3 rounded-lg border border-slate-700/60">
+        "<%= result["emergency_script"] %>"
+      </p>
+      <p class="text-[10px] text-slate-400 italic">Read this aloud verbatim when speaking to emergency helpline operators or family members.</p>
+    </div>
+  <% end %>
+
+  <!-- Footer context info -->
+  <div class="pt-2 border-t border-slate-800/80 flex justify-between items-center text-[11px] text-slate-400">
+    <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-emerald-500"></span> Kerala District: Thiruvananthapuram</span>
+    <span class="font-mono text-emerald-400">Vimukthi Active</span>
+  </div>
+</div>
